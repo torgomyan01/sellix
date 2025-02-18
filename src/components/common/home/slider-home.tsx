@@ -25,7 +25,7 @@ function SliderHome() {
           1440: { slidesPerView: 10 }, // Լայն էկրան
         }}
       >
-        {[...fakeProducts, ...fakeProducts].map((item, i) => (
+        {[...fakeProducts, ...fakeProducts].map((item) => (
           <SwiperSlide key={RandomKey()}>
             <div className="w-full h-auto">
               <Image

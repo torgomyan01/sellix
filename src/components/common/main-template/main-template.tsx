@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import { store } from "@/store/store";
 
 interface IMainTemplate {
-  children: any;
+  children: React.ReactNode;
 }
 
 function MainTemplate({ children }: IMainTemplate) {
