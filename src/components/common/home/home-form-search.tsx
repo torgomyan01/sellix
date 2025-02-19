@@ -46,7 +46,7 @@ function HomeFormSearch() {
               </button>
             </div>
 
-            <div className="w-full grid grid-cols-1 gap-4 h-[300px]  mt-4 pr-2 overflow-y-auto">
+            <div className="w-full grid grid-cols-1 gap-4 h-[200] sm:h-[300px]  mt-4 pr-2 overflow-y-auto">
               {fakeProducts.map((item) => (
                 <SwiperSlide key={RandomKey()}>
                   <div className="w-full h-auto flex-js-s gap-4 cursor-pointer">

@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <MainTemplate>
       <div className="bg-[#EFF0F6] w-full h-full px-4 md:px-10 pt-6 overflow-hidden">
-        <div className="flex-je-c">
+        <div className="flex-jsb-c sm:flex-je-c">
           {/*<button*/}
           {/*  onClick={() => setModalLogin(true)}*/}
           {/*  className="bg-white border border-gray-300 rounded-[40px] px-4 py-2 hover:border-[blue] transition"*/}
@@ -31,16 +31,24 @@ export default function Home() {
           {/*  Ավելացնել Հայտարարություն*/}
           {/*</button>*/}
 
+          <Image
+            src="img/SELLIX.svg"
+            alt="sellix home logo"
+            width={230}
+            height={54}
+            className="w-[110px] sm:w-[230px] h-auto block sm:hidden"
+          />
+
           <div className="flex-je-c gap-2">
             <button
-              className="border text-black px-4 py-2 rounded-[8px] transition hover:border-black"
+              className="border text-black px-4 py-2 rounded-[8px] text-[14px] sm:text-[16px] transition hover:border-black hidden sm:block"
               onClick={() => setModalLogin(true)}
             >
               <i className="fa-light fa-right-to-bracket mr-2"></i>
               Մուտք
             </button>
             <button
-              className="bg-blue text-white px-4 py-2 rounded-[8px] transition hover:bg-[#1550E6] "
+              className="bg-blue text-white px-4 py-2 rounded-[8px] text-[14px] sm:text-[16px] transition hover:bg-[#1550E6] "
               onClick={() => setModalRegister(true)}
             >
               <i className="fa-solid fa-user-plus mr-2"></i>
@@ -55,13 +63,13 @@ export default function Home() {
             alt="sellix home logo"
             width={230}
             height={54}
-            className="w-[180px] sm:w-[230px] h-auto "
+            className="w-[180px] sm:w-[230px] h-auto hidden sm:block"
           />
           <h1 className="text-center text-[18px] sm:text-[28px] mt-2 ">
             Հայստանում ամեն ինչ կա
           </h1>
 
-          <div className="flex-jc-c gap-2 mt-6 w-full min-[632px]:w-auto">
+          <div className="flex-jc-c gap-2 mt-4 sm:mt-6 w-full min-[632px]:w-auto">
             <HomeFormSearch />
 
             <div className="w-[1px] hidden lg:block">
@@ -76,7 +84,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-full h-[64px] fixed bottom-0 left-0 bg-white flex-jsb-c border-top shadow px-4">
+      <div className="w-full h-[64px] fixed bottom-0 left-0 bg-white flex-jsb-c border-top shadow px-2 sm:px-4">
         <div className="flex-jc-c flex-col">
           <i className="fa-regular fa-house"></i>
           <span className="text-[14px]">Գլխաոր</span>
@@ -94,7 +102,7 @@ export default function Home() {
         <div className="w-[1px] h-[40px] bg-gray-200 mx-2"></div>
         <div className="flex-jc-c flex-col">
           <i className="fa-light fa-user"></i>
-          <span className="text-[14px]">Իմ պռոֆիլը</span>
+          <span className="text-[14px] text-nowrap">Իմ պռոֆիլը</span>
         </div>
       </div>
 
