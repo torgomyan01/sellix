@@ -11,10 +11,14 @@ import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Button, TextField } from "@mui/material";
+import { allCategories } from "../../utils/consts";
+import { RandomKey } from "../../utils/helpers";
 
 export default function Home() {
   const [modalLogin, setModalLogin] = useState<boolean>(false);
   const [modalRegister, setModalRegister] = useState<boolean>(false);
+
+  const [openCategoryModal, setOpenCategoryModal] = useState<boolean>(false);
 
   const closeModalLogin = () => setModalLogin(false);
   const closeModalRegister = () => setModalRegister(false);
@@ -73,7 +77,10 @@ export default function Home() {
             <HomeFormSearch />
 
             <div className="w-[1px] hidden lg:block">
-              <button className="bg-blue text-white px-3 py-2 rounded-[8px] transition hover:bg-[#1550E6]">
+              <button
+                className="bg-blue text-white px-3 py-2 rounded-[8px] transition hover:bg-[#1550E6]"
+                onClick={() => setOpenCategoryModal(true)}
+              >
                 <i className="fa-solid fa-grid-2 mr-2 text-white"></i>
                 Կատալոգ
               </button>
@@ -84,13 +91,41 @@ export default function Home() {
         </div>
       </div>
 
+      <div
+        className={`${openCategoryModal ? "block" : "hidden"} w-full h-[100dvh] fixed top-0 left-0 bg-white p-6 z-50 flex flex-col`}
+      >
+        <div className="flex-je-c">
+          <i
+            className="fa-solid fa-xmark-large cursor-pointer"
+            onClick={() => setOpenCategoryModal(false)}
+          ></i>
+        </div>
+
+        <div className="flex-js-s w-full flex-grow overflow-hidden">
+          <div className="w-[400px] h-full overflow-y-auto flex flex-col gap-2 pr-4">
+            {allCategories.map((category) => (
+              <div
+                key={RandomKey()}
+                className="w-fill h-[44px] min-h-[44px] flex-js-c ps-2 rounded-[8px] hover:bg-blue/30 hover:text-blue cursor-pointer"
+              >
+                <i className={`fa-solid ${category.icon} mr-2`}></i>
+                {category.name}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <div className="w-full h-[64px] fixed bottom-0 left-0 bg-white flex-jsb-c border-top shadow px-2 sm:px-4 flex sm:hidden">
         <div className="flex-jc-c flex-col">
           <i className="fa-regular fa-house text-blue"></i>
           <span className="text-[14px] text-blue">Գլխաոր</span>
         </div>
         <div className="w-[1px] h-[40px] bg-gray-200 mx-2"></div>
-        <div className="flex-jc-c flex-col">
+        <div
+          className="flex-jc-c flex-col"
+          onClick={() => setOpenCategoryModal(true)}
+        >
           <i className="fa-regular fa-grid-2"></i>
           <span className="text-[14px]">Կատալոգ</span>
         </div>
@@ -100,7 +135,7 @@ export default function Home() {
           <span className="text-[14px]">Հավանած</span>
         </div>
         <div className="w-[1px] h-[40px] bg-gray-200 mx-2"></div>
-        <div className="flex-jc-c flex-col">
+        <div className="flex-jc-c flex-col" onClick={() => setModalLogin(true)}>
           <i className="fa-light fa-user"></i>
           <span className="text-[14px] text-nowrap">Իմ պռոֆիլը</span>
         </div>
@@ -116,7 +151,7 @@ export default function Home() {
             ></i>
           </div>
         </DialogTitle>
-        <DialogContent className="w-full sm:w-[400px]">
+        <DialogContent className="w-full min-w-[calc(100vw_-_32px)] min-[550px]:min-w-[100%] min-[550px]:w-[400px]">
           <div className="pt-2">
             <div className="w-full mb-8">
               <TextField
@@ -151,7 +186,7 @@ export default function Home() {
             ></i>
           </div>
         </DialogTitle>
-        <DialogContent className="w-full sm:w-[400px]">
+        <DialogContent className="w-full min-w-[calc(100vw_-_32px)] min-[550px]:min-w-[100%] min-[550px]:w-[400px]">
           <div className="pt-2">
             <div className="w-full mb-8">
               <TextField

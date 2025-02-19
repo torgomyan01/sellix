@@ -88,7 +88,7 @@ function HomeFormSearch() {
       </form>
 
       {result && (
-        <div className="w-full h-[100dvh] bg-white fixed top-0 left-0 block sm:hidden z-20">
+        <div className="w-full h-[100dvh] bg-white fixed top-0 left-0 sm:hidden z-20 flex flex-col">
           <div className="flex-je-c p-4">
             <i
               className="fa-solid fa-xmark-large"
@@ -105,9 +105,26 @@ function HomeFormSearch() {
               />
               <i className="fa-regular fa-magnifying-glass absolute right-3 top-[50%] transform translate-y-[-40%]"></i>
             </label>
+            <div className="flex-js-c gap-2 flex-wrap mt-4">
+              <button className="px-3 py-1 text-[14px] sm:text-[16px] bg-gray-200 rounded-[4px] text-gray-600">
+                Karobka
+              </button>
+              <button className="px-3 py-1 text-[14px] sm:text-[16px] bg-gray-200 rounded-[4px] text-gray-600">
+                CX-5
+              </button>
+              <button className="px-3 py-1 text-[14px] sm:text-[16px] bg-gray-200 rounded-[4px] text-gray-600">
+                Պահեստամասեր
+              </button>
+              <button className="px-3 py-1 text-[14px] sm:text-[16px] bg-gray-200 rounded-[4px] text-gray-600">
+                Շիթ
+              </button>
+              <button className="px-3 py-1 text-[14px] sm:text-[16px] bg-gray-200 rounded-[4px] text-gray-600">
+                Ներկել
+              </button>
+            </div>
           </div>
 
-          <div className="w-full pl-4 pr-1 h-[calc(100dvh_-_105px)]">
+          <div className="w-full pl-4 pr-1 flex-grow overflow-hidden">
             <div className="w-full pr-2 h-full overflow-x-auto pt-4">
               {fakeProducts.map((item) => (
                 <div
