@@ -6,13 +6,14 @@ import "swiper/css/autoplay";
 import HomeFormSearch from "@/components/common/home/home-form-search";
 import MainTemplate from "@/components/common/main-template/main-template";
 import SliderHome from "@/components/common/home/slider-home";
-import { useState } from "react";
+import React, { useState } from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Button, TextField } from "@mui/material";
-import { allCategories } from "../../utils/consts";
+import { allCategories, subCategories } from "../../utils/consts";
 import { RandomKey } from "../../utils/helpers";
+import Link from "next/link";
 
 export default function Home() {
   const [modalLogin, setModalLogin] = useState<boolean>(false);
@@ -113,6 +114,27 @@ export default function Home() {
               </div>
             ))}
           </div>
+          <div className="px-6 pl-10">
+            <h2 className="text-[22px] font-bold mb-6">Էլեկտրոնիկա</h2>
+            <div className="flex-js-s gap-10 flex-wrap">
+              {subCategories.map((item) => (
+                <div key={RandomKey()}>
+                  <h3 className="font-bold mb-4 text-[18px]">{item.name}</h3>
+
+                  <ul>
+                    {item.subcategories.map((sub) => (
+                      <li
+                        key={RandomKey()}
+                        className="mb-2 text-gray-500 hover:text-blue"
+                      >
+                        <Link href="#">{sub}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
@@ -151,7 +173,7 @@ export default function Home() {
             ></i>
           </div>
         </DialogTitle>
-        <DialogContent className="w-full min-w-[calc(100vw_-_32px)] min-[550px]:min-w-[100%] min-[550px]:w-[400px]">
+        <DialogContent className="w-full sm:w-[400px]">
           <div className="pt-2">
             <div className="w-full mb-8">
               <TextField
@@ -186,7 +208,7 @@ export default function Home() {
             ></i>
           </div>
         </DialogTitle>
-        <DialogContent className="w-full min-w-[calc(100vw_-_32px)] min-[550px]:min-w-[100%] min-[550px]:w-[400px]">
+        <DialogContent className="w-full sm:w-[400px]">
           <div className="pt-2">
             <div className="w-full mb-8">
               <TextField

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { fakeProducts } from "../../../../utils/consts";
+import { fakeProducts, subCategories } from "../../../../utils/consts";
 import { RandomKey } from "../../../../utils/helpers";
 import Link from "next/link";
 import React, { useRef, useState } from "react";
