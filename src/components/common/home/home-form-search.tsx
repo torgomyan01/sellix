@@ -23,15 +23,15 @@ function HomeFormSearch() {
       >
         <label
           onClick={searchResult}
-          className={`w-full h-[40px] ${result ? "border-gray-500" : "border-gray-300"} border transition rounded-[40px] bg-white overflow-hidden px-4 flex-jsb-c relative z-50`}
+          className={`w-full h-[40px] ${result ? "border-gray-500 z-10" : "border-gray-300"} border transition rounded-[40px] bg-white overflow-hidden px-4 flex-jsb-c relative`}
         >
           <input
-            className="w-full h-full"
+            className="w-full h-full hidden sm:block"
             type="text"
             placeholder="Որոնում"
-            disabled={window.innerWidth < 657}
             defaultValue="Matori yux"
           />
+          <span className="text-gray-500 block sm:hidden">Որոնում</span>
           <i className="fa-regular fa-magnifying-glass"></i>
         </label>
         {result && (
@@ -88,7 +88,7 @@ function HomeFormSearch() {
       </form>
 
       {result && (
-        <div className="w-full h-[100dvh] bg-white fixed top-0 left-0 block sm:hidden">
+        <div className="w-full h-[100dvh] bg-white fixed top-0 left-0 block sm:hidden z-20">
           <div className="flex-je-c p-4">
             <i
               className="fa-solid fa-xmark-large"
