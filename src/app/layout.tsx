@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "../icons/icons.css";
-import "primereact/resources/themes/saga-blue/theme.css"; // Թեմա
-import "primereact/resources/primereact.min.css"; // PrimeReact CSS
-import "primeicons/primeicons.css"; // PrimeIcons CSS
-import { PrimeReactProvider } from "primereact/api";
 
 export const metadata: Metadata = {
   title: "SELLIX",
@@ -18,9 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="hy" suppressHydrationWarning={true}>
-      <PrimeReactProvider>
-        <body className="h-[100dvh]">{children}</body>
-      </PrimeReactProvider>
+      <body className="h-[100dvh]">{children}</body>
     </html>
   );
 }

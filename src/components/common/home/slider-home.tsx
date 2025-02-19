@@ -6,7 +6,7 @@ import Image from "next/image";
 
 function SliderHome() {
   return (
-    <div className="w-[calc(100%_+_80px)] overflow-hidden mt-6 sm:mt-10">
+    <div className="w-full sm:w-[calc(100%_+_80px)] overflow-hidden mt-6 sm:mt-10">
       <Swiper
         modules={[Autoplay]}
         spaceBetween={30}

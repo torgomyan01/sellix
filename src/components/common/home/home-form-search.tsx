@@ -29,19 +29,19 @@ function HomeFormSearch() {
         {result && (
           <div className="w-full bg-white absolute top-[100%] left-0 mt-1 rounded-[8px] border p-4">
             <div className="flex-js-c gap-2 flex-wrap">
-              <button className="px-3 py-1 bg-gray-200 rounded-[4px] text-gray-600">
+              <button className="px-3 py-1 text-[14px] sm:text-[16px] bg-gray-200 rounded-[4px] text-gray-600">
                 Karobka
               </button>
-              <button className="px-3 py-1 bg-gray-200 rounded-[4px] text-gray-600">
+              <button className="px-3 py-1 text-[14px] sm:text-[16px] bg-gray-200 rounded-[4px] text-gray-600">
                 CX-5
               </button>
-              <button className="px-3 py-1 bg-gray-200 rounded-[4px] text-gray-600">
+              <button className="px-3 py-1 text-[14px] sm:text-[16px] bg-gray-200 rounded-[4px] text-gray-600">
                 Պահեստամասեր
               </button>
-              <button className="px-3 py-1 bg-gray-200 rounded-[4px] text-gray-600">
+              <button className="px-3 py-1 text-[14px] sm:text-[16px] bg-gray-200 rounded-[4px] text-gray-600">
                 Շիթ
               </button>
-              <button className="px-3 py-1 bg-gray-200 rounded-[4px] text-gray-600">
+              <button className="px-3 py-1 text-[14px] sm:text-[16px] bg-gray-200 rounded-[4px] text-gray-600">
                 Ներկել
               </button>
             </div>
@@ -55,7 +55,7 @@ function HomeFormSearch() {
                       alt={item.title}
                       width={100}
                       height={100}
-                      className="w-[100px] h-[100px] rounded-[8px] object-cover object-center shadow"
+                      className="w-[100px] min-w-[100px] h-[100px] rounded-[8px] object-cover object-center shadow"
                     />
                     <h3 className="text-[16px]">{item.title}</h3>
                   </div>

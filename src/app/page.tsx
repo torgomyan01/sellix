@@ -6,25 +6,24 @@ import "swiper/css/autoplay";
 import HomeFormSearch from "@/components/common/home/home-form-search";
 import MainTemplate from "@/components/common/main-template/main-template";
 import SliderHome from "@/components/common/home/slider-home";
-import { Dialog } from "primereact/dialog";
 import { useState } from "react";
-import { InputText } from "primereact/inputtext";
-import { InputMask } from "primereact/inputmask";
-import { Button } from "primereact/button";
-import { Password } from "primereact/password";
+import InputMask from "react-input-mask";
+import Dialog from "@mui/material/Dialog";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import { Button, TextField } from "@mui/material";
 
 export default function Home() {
   const [modalLogin, setModalLogin] = useState<boolean>(false);
   const [modalRegister, setModalRegister] = useState<boolean>(false);
 
+  const closeModalLogin = () => setModalLogin(false);
+  const closeModalRegister = () => setModalRegister(false);
+
   return (
     <MainTemplate>
       <div className="bg-[#EFF0F6] w-full h-full px-4 md:px-10 pt-6 overflow-hidden">
-        <div className="flex-jsb-c lg:flex-je-c">
-          <button className="bg-blue text-white px-3 py-2 rounded-[8px] transition hover:bg-[#1550E6] block lg:hidden">
-            <i className="fa-solid fa-grid-2 mr-2 text-white"></i>
-            Կատալոգ
-          </button>
+        <div className="flex-je-c">
           {/*<button*/}
           {/*  onClick={() => setModalLogin(true)}*/}
           {/*  className="bg-white border border-gray-300 rounded-[40px] px-4 py-2 hover:border-[blue] transition"*/}
@@ -51,7 +50,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="w-full h-[calc(100%_-_50px)] flex-jc-c flex-col">
+        <div className="w-full h-[calc(100%_-_50px)] pt-10 sm:pt-0 flex-js-c sm:flex-jc-c flex-col">
           <Image
             src="img/SELLIX.svg"
             alt="sellix home logo"
@@ -78,76 +77,106 @@ export default function Home() {
         </div>
       </div>
 
-      <Dialog
-        header="Մուտք"
-        visible={modalLogin}
-        onHide={() => setModalLogin(false)}
-        className="w-[400px] px-4 py-3 bg-white"
-      >
-        <form action="#" className="p-2 pt-6">
-          <div className="w-full mb-3 h-[44px]">
-            <InputMask
-              placeholder="Հեռախոսահամար"
-              mask="+374 (99) 99-99-99"
-              className="border w-full h-full ps-2"
-            />
-          </div>
-          <div className="w-full mb-3 h-[44px]">
-            <InputText
-              type="password"
-              placeholder="Գաղտնաբառ"
-              className="border w-full h-full ps-2"
-            />
-          </div>
+      <div className="w-full h-[64px] fixed bottom-0 left-0 bg-white flex-jsb-c border-top shadow px-4">
+        <div className="flex-jc-c flex-col">
+          <i className="fa-regular fa-house"></i>
+          <span className="text-[14px]">Գլխաոր</span>
+        </div>
+        <div className="w-[1px] h-[40px] bg-gray-200 mx-2"></div>
+        <div className="flex-jc-c flex-col">
+          <i className="fa-regular fa-grid-2"></i>
+          <span className="text-[14px]">Կատալոգ</span>
+        </div>
+        <div className="w-[1px] h-[40px] bg-gray-200 mx-2"></div>
+        <div className="flex-jc-c flex-col">
+          <i className="fa-light fa-heart"></i>
+          <span className="text-[14px]">Հավանած</span>
+        </div>
+        <div className="w-[1px] h-[40px] bg-gray-200 mx-2"></div>
+        <div className="flex-jc-c flex-col">
+          <i className="fa-light fa-user"></i>
+          <span className="text-[14px]">Իմ պռոֆիլը</span>
+        </div>
+      </div>
 
-          <div className="text-center">
-            <Button
-              label="Մուտք"
-              severity="secondary"
-              type="submit"
-              className="bg-blue text-white px-4 py-2"
-            />
+      <Dialog open={modalLogin} onClose={closeModalLogin}>
+        <DialogTitle>
+          <div className="flex-jsb-c">
+            <span>Մուտք</span>
+            <i
+              className="fa-regular fa-xmark-large text-[15px] cursor-pointer"
+              onClick={closeModalLogin}
+            ></i>
           </div>
-        </form>
+        </DialogTitle>
+        <DialogContent className="w-full sm:w-[400px]">
+          <div className="pt-2">
+            <div className="w-full mb-8">
+              <TextField
+                label="Հեռախոսահամար"
+                className="w-full"
+                variant="outlined"
+              />
+            </div>
+            <div className="w-full mb-4">
+              <TextField
+                label="Գաղտնաբառ"
+                className="w-full"
+                variant="outlined"
+                type="password"
+              />
+            </div>
+
+            <div className="flex-jc-c">
+              <Button variant="contained">Մուտք</Button>
+            </div>
+          </div>
+        </DialogContent>
       </Dialog>
 
-      <Dialog
-        header="Գրանցում"
-        visible={modalRegister}
-        onHide={() => setModalRegister(false)}
-        className="w-[400px] px-4 py-3 bg-white"
-      >
-        <form action="#" className="p-2 pt-6">
-          <div className="w-full mb-3 h-[44px]">
-            <InputText
-              placeholder="Անուն Ազգանուն / Ընկերություն"
-              className="border w-full h-full ps-2"
-            />
+      <Dialog open={modalRegister} onClose={closeModalRegister}>
+        <DialogTitle>
+          <div className="flex-jsb-c">
+            <span>Գրանցում</span>
+            <i
+              className="fa-regular fa-xmark-large text-[15px] cursor-pointer"
+              onClick={closeModalRegister}
+            ></i>
           </div>
-          <div className="w-full mb-3 h-[44px]">
-            <InputMask
-              placeholder="Հեռախոսահամար"
-              mask="+374 (99) 99-99-99"
-              className="border w-full h-full ps-2"
-            />
-          </div>
-          <div className="w-full mb-3 h-[44px]">
-            <Password
-              placeholder="Գաղտնաբառ"
-              toggleMask
-              className="border w-full h-full ps-2"
-            />
-          </div>
+        </DialogTitle>
+        <DialogContent className="w-full sm:w-[400px]">
+          <div className="pt-2">
+            <div className="w-full mb-8">
+              <TextField
+                label="Անուն Ազգանուն / Ընկերություն"
+                name="name"
+                className="w-full"
+                variant="outlined"
+              />
+            </div>
+            <div className="w-full mb-8">
+              <TextField
+                label="Հեռախոսահամար"
+                name="phone"
+                className="w-full"
+                variant="outlined"
+              />
+            </div>
+            <div className="w-full mb-4">
+              <TextField
+                label="Գաղտնաբառ"
+                name="password"
+                className="w-full"
+                variant="outlined"
+                type="password"
+              />
+            </div>
 
-          <div className="text-center">
-            <Button
-              label="Մուտք"
-              severity="secondary"
-              type="submit"
-              className="bg-blue text-white px-4 py-2"
-            />
+            <div className="flex-jc-c">
+              <Button variant="contained">Գրանցվել</Button>
+            </div>
           </div>
-        </form>
+        </DialogContent>
       </Dialog>
     </MainTemplate>
   );

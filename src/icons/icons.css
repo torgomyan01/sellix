@@ -25,6 +25,18 @@
 .fa-right-to-bracket:before {
     content: "\f2f6"
 }
+.fa-xmark-large:before {
+    content: "\e59b"
+}
+.fa-house:before {
+    content: "\f015"
+}
+.fa-heart:before {
+    content: "\f004"
+}
+.fa-user:before {
+    content: "\f007"
+}
 
 
 /*---------------------------------*/
