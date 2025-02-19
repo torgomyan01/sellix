@@ -66,7 +66,7 @@ export default function Home() {
             className="w-[180px] sm:w-[230px] h-auto hidden sm:block"
           />
           <h1 className="text-center text-[18px] sm:text-[28px] mt-2 ">
-            Հայստանում ամեն ինչ կա
+            Հայաստանում ամեն ինչ կա
           </h1>
 
           <div className="flex-jc-c gap-2 mt-4 sm:mt-6 w-full min-[632px]:w-auto">
@@ -86,8 +86,8 @@ export default function Home() {
 
       <div className="w-full h-[64px] fixed bottom-0 left-0 bg-white flex-jsb-c border-top shadow px-2 sm:px-4 flex sm:hidden">
         <div className="flex-jc-c flex-col">
-          <i className="fa-regular fa-house"></i>
-          <span className="text-[14px]">Գլխաոր</span>
+          <i className="fa-regular fa-house text-blue"></i>
+          <span className="text-[14px] text-blue">Գլխաոր</span>
         </div>
         <div className="w-[1px] h-[40px] bg-gray-200 mx-2"></div>
         <div className="flex-jc-c flex-col">
