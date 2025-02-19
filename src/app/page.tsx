@@ -7,7 +7,6 @@ import HomeFormSearch from "@/components/common/home/home-form-search";
 import MainTemplate from "@/components/common/main-template/main-template";
 import SliderHome from "@/components/common/home/slider-home";
 import { useState } from "react";
-import InputMask from "react-input-mask";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
