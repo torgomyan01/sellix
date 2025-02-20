@@ -11,9 +11,9 @@ import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Button, TextField } from "@mui/material";
-import { allCategories, subCategories } from "../../utils/consts";
-import { RandomKey } from "../../utils/helpers";
 import Link from "next/link";
+import { subCategories } from "@/utils/consts";
+import { RandomKey } from "@/utils/helpers";
 
 export default function Home() {
   const [modalLogin, setModalLogin] = useState<boolean>(false);
