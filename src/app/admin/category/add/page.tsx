@@ -1,39 +1,47 @@
 "use client";
 
 import MainTemplateAdmin from "@/app/admin/main-template-admin";
-import React, { useState } from "react";
+import React, { useState, FormEvent, ChangeEvent } from "react";
 import { Button, TextField } from "@mui/material";
 import { toast } from "react-toastify";
 import { CreateCategory } from "@/utils/api";
-import { allCategories } from "@/utils/consts";
+
+interface CategoryData {
+  nameCategory: string;
+  icon_name: string;
+  icon_code: string;
+}
 
 function AddCategory() {
   const [loading, setLoading] = useState<boolean>(false);
   const [iconName, setIconName] = useState<string>("");
   const [iconCode, setIconCode] = useState<string>("");
 
-  function startCreateCategory(event: any) {
+  function startCreateCategory(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const form = event.target;
+    const form = event.currentTarget as HTMLFormElement;
+
+    const formData: CategoryData = {
+      nameCategory: form["nameCategory"].value,
+      icon_name: form["icon_name"].value,
+      icon_code: form["icon_code"].value,
+    };
 
     setLoading(true);
 
-    CreateCategory({
-      nameCategory: form.icon_code.value,
-      icon_name: form.icon_code.value,
-      icon_code: form.icon_code.value,
-    })
+    CreateCategory(formData)
       .then(({ data }) => {
-        if (data.data) {
+        if (data?.data) {
           setLoading(false);
           toast.success("Կատեգորիան հաջողությամբ ավելացվել է");
         }
       })
-      .catch((err) => {
+      .catch(() => {
         toast.error("Տեղի է ունեցել խնդիր խնդրում ենք ստուգեք քոնսոլը");
         setLoading(false);
       });
   }
+
   return (
     <MainTemplateAdmin>
       <style>
@@ -64,7 +72,9 @@ function AddCategory() {
             name="icon_name"
             className="w-[400]"
             variant="outlined"
-            onChange={(e) => setIconName(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setIconName(e.target.value)
+            }
             required
           />
         </div>
@@ -74,7 +84,9 @@ function AddCategory() {
             name="icon_code"
             className="w-[400]"
             variant="outlined"
-            onChange={(e) => setIconCode(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setIconCode(e.target.value)
+            }
             required
           />
           <i
