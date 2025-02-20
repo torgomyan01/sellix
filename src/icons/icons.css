@@ -155,6 +155,13 @@
     content: "\f061";
 }
 
+.fa-bars:before {
+    content: "\f0c9";
+}
+.fa-layer-group:before {
+    content: "\f5fd";
+}
+
 
 /*---------------------------------*/
 

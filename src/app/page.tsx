@@ -105,11 +105,8 @@ export default function Home() {
         <div className="flex-js-s w-full flex-grow overflow-hidden">
           <div className="w-[400px] h-full overflow-y-auto flex flex-col gap-2 pr-4">
             {allCategories.map((category, index) => (
-              <>
-                <div
-                  key={RandomKey()}
-                  className="w-fill h-[44px] min-h-[44px] group flex-jsb-c px-2 rounded-[8px] hover:bg-blue/30 hover:text-blue cursor-pointer"
-                >
+              <div key={RandomKey()}>
+                <div className="w-fill h-[44px] min-h-[44px] group flex-jsb-c px-2 rounded-[8px] hover:bg-blue/30 hover:text-blue cursor-pointer">
                   <div className="flex-js-c">
                     <i className={`fa-solid ${category.icon} mr-2`}></i>
                     {category.name}
@@ -119,7 +116,7 @@ export default function Home() {
                 {index === 1 && (
                   <div className="w-full h-[1px] min-h-[1px] bg-gray-200"></div>
                 )}
-              </>
+              </div>
             ))}
           </div>
           <div className="px-6 pl-10">
