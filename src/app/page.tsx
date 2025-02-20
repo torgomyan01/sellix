@@ -104,14 +104,22 @@ export default function Home() {
 
         <div className="flex-js-s w-full flex-grow overflow-hidden">
           <div className="w-[400px] h-full overflow-y-auto flex flex-col gap-2 pr-4">
-            {allCategories.map((category) => (
-              <div
-                key={RandomKey()}
-                className="w-fill h-[44px] min-h-[44px] flex-js-c ps-2 rounded-[8px] hover:bg-blue/30 hover:text-blue cursor-pointer"
-              >
-                <i className={`fa-solid ${category.icon} mr-2`}></i>
-                {category.name}
-              </div>
+            {allCategories.map((category, index) => (
+              <>
+                <div
+                  key={RandomKey()}
+                  className="w-fill h-[44px] min-h-[44px] group flex-jsb-c px-2 rounded-[8px] hover:bg-blue/30 hover:text-blue cursor-pointer"
+                >
+                  <div className="flex-js-c">
+                    <i className={`fa-solid ${category.icon} mr-2`}></i>
+                    {category.name}
+                  </div>
+                  <i className="fa-light fa-arrow-right opacity-0 group-hover:opacity-100"></i>
+                </div>
+                {index === 1 && (
+                  <div className="w-full h-[1px] min-h-[1px] bg-gray-200"></div>
+                )}
+              </>
             ))}
           </div>
           <div className="px-6 pl-10">

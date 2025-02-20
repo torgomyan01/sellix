@@ -143,6 +143,17 @@
     content: "\f001";
 }
 
+.fa-building:before {
+    content: "\f1ad";
+}
+
+.fa-truck:before {
+    content: "\f1b9";
+}
+
+.fa-arrow-right:before {
+    content: "\f061";
+}
 
 
 /*---------------------------------*/
