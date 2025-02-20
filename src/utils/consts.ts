@@ -1,30 +1,30 @@
-export const SITE_URL = {
-  HOME: "/",
-  MUSICS: "/musics",
-  PRIVACY_POLICY: "/privacy-policy",
-  ABOUT_US: "/about-us",
-};
+// export const SITE_URL = {
+//   HOME: "/",
+//   MUSICS: "/musics",
+//   PRIVACY_POLICY: "/privacy-policy",
+//   ABOUT_US: "/about-us",
+// };
+//
+// export const API_URL = {
+//   HOST: "http://ytsmpt-api.loc/api",
+//   SAVE_MP3: "/save-mp3",
+// };
+//
+// export const SQL = {
+//   INSERT_TRACK: (data: any) =>
+//     `INSERT INTO tracks (title, videoID, pathTrack, server_link, keywords, description, seo_link, status, created_at, updated_at)
+//         VALUES ('${data.title}','${data.videoID}','${data.pathTrack}','${data.server_link}','${data.keywords}','${data.description}','${data.seo_link}', '${data.status}', '${data.created_at}','${data.updated_at}')`,
+// };
 
-export const API_URL = {
-  HOST: "http://ytsmpt-api.loc/api",
-  SAVE_MP3: "/save-mp3",
-};
-
-export const SQL = {
-  INSERT_TRACK: (data: any) =>
-    `INSERT INTO tracks (title, videoID, pathTrack, server_link, keywords, description, seo_link, status, created_at, updated_at) 
-        VALUES ('${data.title}','${data.videoID}','${data.pathTrack}','${data.server_link}','${data.keywords}','${data.description}','${data.seo_link}', '${data.status}', '${data.created_at}','${data.updated_at}')`,
-};
-
-export const getDbConnection: any = () => {
-  return {
-    host: "mysql.4b3575f26be4.hosting.myjino.ru",
-    port: "3306",
-    user: "j1381019",
-    password: "6Cmw2vwWCu",
-    database: "j1381019_ytsmp3",
-  };
-};
+// export const getDbConnection: any = () => {
+//   return {
+//     host: "mysql.4b3575f26be4.hosting.myjino.ru",
+//     port: "3306",
+//     user: "j1381019",
+//     password: "6Cmw2vwWCu",
+//     database: "j1381019_ytsmp3",
+//   };
+// };
 
 export const fakeProducts = [
   {
