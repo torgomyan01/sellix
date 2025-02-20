@@ -14,7 +14,7 @@ export async function POST(request: Request) {
   try {
     const requestData: CategoryRequestData = await request.json();
 
-    const db: Connection = await mysql.createConnection(getDbConnection());
+    const db: Connection = await mysql.createConnection(getDbConnection);
 
     const [createCategory]: [OkPacket, FieldPacket[]] = await db.execute(
       SQL.CREATE_CATEGORY(requestData),

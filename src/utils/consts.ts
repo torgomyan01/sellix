@@ -1,3 +1,5 @@
+import { ConnectionOptions } from "mysql2";
+
 export const SITE_URL = {
   HOME: "/",
   ADMIN: "/admin",
@@ -17,14 +19,12 @@ export const SQL = {
   REMOVE_CATEGORY: (id: string) => `DELETE FROM category WHERE id='${id}'`,
 };
 
-export const getDbConnection: any = () => {
-  return {
-    host: "localhost",
-    port: "3306",
-    user: "root",
-    password: "",
-    database: "sellix",
-  };
+export const getDbConnection: ConnectionOptions = {
+  host: "localhost",
+  // port: "3306",
+  user: "root",
+  password: "",
+  database: "sellix",
 };
 
 export const fakeProducts = [

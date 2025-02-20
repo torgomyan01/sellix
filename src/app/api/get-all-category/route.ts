@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 export async function GET() {
   try {
-    const db: Connection = await mysql.createConnection(getDbConnection());
+    const db: Connection = await mysql.createConnection(getDbConnection);
 
     const [getAllCategories]: [QueryResult, FieldPacket[]] = await db.execute(
       SQL.GET_ALL_CAT,
