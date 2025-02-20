@@ -6,6 +6,8 @@ import React from "react";
 import { AppProvider, Navigation } from "@toolpad/core/AppProvider";
 import { DashboardLayout } from "@toolpad/core/DashboardLayout";
 import { PageContainer } from "@toolpad/core/PageContainer";
+import { SITE_URL } from "@/utils/consts";
+import { ToastContainer, toast } from "react-toastify";
 
 const NAVIGATION: Navigation = [
   {
@@ -13,12 +15,12 @@ const NAVIGATION: Navigation = [
     title: "Կատեգորիաներ",
   },
   {
-    segment: "admin/category",
+    segment: SITE_URL.ADMIN_CATEGORY,
     title: "Կատեգորիաներ",
     icon: <i className="fa-regular fa-layer-group"></i>,
   },
   {
-    segment: "admin/category/add",
+    segment: SITE_URL.ADMIN_CATEGORY_ADD,
     title: "Ավելացնել Կատեգորիա",
     icon: <i className="fa-regular fa-plus"></i>,
   },
@@ -72,6 +74,7 @@ export default function MainTemplateAdmin({
         homeUrl: "/admin",
       }}
     >
+      <ToastContainer />
       <DashboardLayout>
         <PageContainer>{children}</PageContainer>
       </DashboardLayout>

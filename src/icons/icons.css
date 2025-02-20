@@ -28,128 +28,6 @@
 .fa-xmark-large:before {
     content: "\e59b"
 }
-.fa-house:before {
-    content: "\f015"
-}
-.fa-heart:before {
-    content: "\f004"
-}
-.fa-user:before {
-    content: "\f007"
-}
-
-
-.fa-microchip:before {
-    content: "\f2db";
-}
-
-.fa-shirt:before {
-    content: "\f553";
-}
-
-.fa-shoe-prints:before {
-    content: "\f54b";
-}
-
-.fa-house:before {
-    content: "\f015";
-}
-
-.fa-baby:before {
-    content: "\f77c";
-}
-
-.fa-spa:before {
-    content: "\f5bb";
-}
-
-.fa-blender:before {
-    content: "\f517";
-}
-
-.fa-futbol:before {
-    content: "\f1e3";
-}
-
-.fa-hammer:before {
-    content: "\f6e3";
-}
-
-.fa-utensils:before {
-    content: "\f2e7";
-}
-
-.fa-prescription-bottle:before {
-    content: "\f485";
-}
-
-.fa-paw:before {
-    content: "\f1b0";
-}
-
-.fa-book:before {
-    content: "\f02d";
-}
-
-.fa-fish:before {
-    content: "\f578";
-}
-
-.fa-car:before {
-    content: "\f1b9";
-}
-
-.fa-couch:before {
-    content: "\f4b8";
-}
-
-.fa-paintbrush:before {
-    content: "\f1fc";
-}
-
-.fa-gem:before {
-    content: "\f3a5";
-}
-
-.fa-glasses:before {
-    content: "\f530";
-}
-
-.fa-gamepad:before {
-    content: "\f11b";
-}
-
-.fa-pencil:before {
-    content: "\f040";
-}
-
-.fa-heart:before {
-    content: "\f004";
-}
-
-.fa-coins:before {
-    content: "\f51e";
-}
-
-.fa-file-code:before {
-    content: "\f1c9";
-}
-
-.fa-pump-soap:before {
-    content: "\e06b";
-}
-
-.fa-music:before {
-    content: "\f001";
-}
-
-.fa-building:before {
-    content: "\f1ad";
-}
-
-.fa-truck:before {
-    content: "\f1b9";
-}
 
 .fa-arrow-right:before {
     content: "\f061";
@@ -160,6 +38,9 @@
 }
 .fa-layer-group:before {
     content: "\f5fd";
+}
+.fa-trash:before {
+    content: "\f1f8";
 }
 
 

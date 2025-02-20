@@ -10,3 +10,7 @@ export const RandomKey = (length = 5) => {
   }
   return result;
 };
+
+export const printStyleHtml = (name: string, code: string) => {
+  return `.${name}:before {content: "\\${code}"}`;
+};
