@@ -1,8 +1,8 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import { fakeProducts } from "../../../../utils/consts";
-import { RandomKey } from "../../../../utils/helpers";
 import Image from "next/image";
+import { fakeProducts } from "@/utils/consts";
+import { RandomKey } from "@/utils/helpers";
 
 function SliderHome() {
   return (

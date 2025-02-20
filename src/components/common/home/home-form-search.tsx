@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { fakeProducts, subCategories } from "../../../../utils/consts";
-import { RandomKey } from "../../../../utils/helpers";
 import Link from "next/link";
 import React, { useRef, useState } from "react";
+import { fakeProducts } from "@/utils/consts";
+import { RandomKey } from "@/utils/helpers";
 
 function HomeFormSearch() {
   const [result, setResult] = useState<boolean>(false);
