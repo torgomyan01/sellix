@@ -6,12 +6,6 @@ import { Button, TextField } from "@mui/material";
 import { toast } from "react-toastify";
 import { CreateCategory } from "@/utils/api";
 
-interface CategoryData {
-  nameCategory: string;
-  icon_name: string;
-  icon_code: string;
-}
-
 function AddCategory() {
   const [loading, setLoading] = useState<boolean>(false);
   const [iconName, setIconName] = useState<string>("");
@@ -21,8 +15,9 @@ function AddCategory() {
     event.preventDefault();
     const form = event.currentTarget as HTMLFormElement;
 
-    const formData: CategoryData = {
-      nameCategory: form["nameCategory"].value,
+    const formData: ICreateCategory = {
+      name: form["nameCategory"].value,
+      parent_id: 0,
       icon_name: form["icon_name"].value,
       icon_code: form["icon_code"].value,
     };

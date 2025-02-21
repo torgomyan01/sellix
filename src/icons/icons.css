@@ -42,6 +42,18 @@
 .fa-trash:before {
     content: "\f1f8";
 }
+.fa-input-numeric:before {
+    content: "\e1bd";
+}
+.fa-house:before {
+    content: "\f015";
+}
+.fa-heart:before {
+    content: "\f004";
+}
+.fa-user:before {
+    content: "\f007";
+}
 
 
 /*---------------------------------*/

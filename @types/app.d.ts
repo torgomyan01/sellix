@@ -1,5 +1,6 @@
 declare interface ICreateCategory {
-  nameCategory: string;
+  name: string;
+  parent_id: number;
   icon_name: string;
   icon_code: string;
 }
@@ -7,6 +8,9 @@ declare interface ICreateCategory {
 declare interface ICategory {
   id: 1;
   name: string;
+  parent_id: number;
   icon_name: string;
   icon_code: string;
 }
+
+type IUpdateCategoryType = "category" | "subcategory" | "subsubcategory";

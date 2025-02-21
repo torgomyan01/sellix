@@ -21,8 +21,13 @@ const NAVIGATION: Navigation = [
   },
   {
     segment: SITE_URL.ADMIN_CATEGORY_ADD,
-    title: "Ավելացնել Կատեգորիա",
+    title: "Ավելացնել",
     icon: <i className="fa-regular fa-plus"></i>,
+  },
+  {
+    segment: SITE_URL.ADMIN_CATEGORY_FORM,
+    title: "ֆորմա",
+    icon: <i className="fa-light fa-input-numeric"></i>,
   },
   {
     segment: "orders",

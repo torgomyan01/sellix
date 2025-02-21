@@ -143,7 +143,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-full h-[64px] fixed bottom-0 left-0 bg-white flex-jsb-c border-top shadow px-2 sm:px-4 flex sm:hidden">
+      <div className="w-full h-[64px] fixed bottom-0 left-0 bg-white flex-jsb-c border-top shadow px-2 sm:px-[20%] flex lg:hidden">
         <div className="flex-jc-c flex-col">
           <i className="fa-regular fa-house text-blue"></i>
           <span className="text-[14px] text-blue">Գլխաոր</span>

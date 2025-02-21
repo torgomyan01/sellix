@@ -1,31 +1,15 @@
-import { ConnectionOptions } from "mysql2";
-
 export const SITE_URL = {
   HOME: "/",
   ADMIN: "/admin",
   ADMIN_CATEGORY: "admin/category",
   ADMIN_CATEGORY_ADD: "admin/category/add",
+  ADMIN_CATEGORY_FORM: "admin/category/form",
 };
 //
 // export const API_URL = {
 //   HOST: "http://ytsmpt-api.loc/api",
 //   SAVE_MP3: "/save-mp3",
 // };
-//
-export const SQL = {
-  CREATE_CATEGORY: ({ nameCategory, icon_name, icon_code }: ICreateCategory) =>
-    `INSERT INTO category (name, icon_name, icon_code) VALUES ('${nameCategory}','${icon_name}','${icon_code}')`,
-  GET_ALL_CAT: `SELECT * FROM category WHERE 1`,
-  REMOVE_CATEGORY: (id: string) => `DELETE FROM category WHERE id='${id}'`,
-};
-
-export const getDbConnection: ConnectionOptions = {
-  host: "localhost",
-  // port: "3306",
-  user: "root",
-  password: "",
-  database: "sellix",
-};
 
 export const fakeProducts = [
   {
@@ -92,64 +76,167 @@ export const fakeProducts = [
 ];
 
 export const allCategories = [
-  { id: 1, name: "Անշարժ գույք", icon: "fa-building", code: "f1ad" },
-  { id: 2, name: "Տրանսպորտ", icon: "fa-truck", code: "f0d1" },
-  { id: 3, name: "Էլեկտրոնիկա", icon: "fa-microchip", code: "f2db" },
-  { id: 4, name: "Հագուստ", icon: "fa-shirt", code: "f553" },
-  { id: 5, name: "Կոշիկ", icon: "fa-shoe-prints", code: "f54b" },
-  { id: 6, name: "Տուն և այգի", icon: "fa-house", code: "e00d" },
-  { id: 7, name: "Մանկական ապրանքներ", icon: "fa-baby", code: "f77c" },
-  { id: 8, name: "Գեղեցկություն և առողջություն", icon: "fa-spa", code: "f5bb" },
-  { id: 9, name: "Կենցաղային տեխնիկա", icon: "fa-blender", code: "f517" },
-  { id: 10, name: "Սպորտ և հանգիստ", icon: "fa-futbol", code: "f1e3" },
+  {
+    id: 1,
+    name: "Անշարժ գույք",
+    icon: "fa-building",
+    code: "f1ad",
+    parent_id: 0,
+  },
+  { id: 2, name: "Տրանսպորտ", icon: "fa-truck", code: "f0d1", parent_id: 0 },
+  {
+    id: 3,
+    name: "Վարձակալություն",
+    icon: "fa-handshake",
+    code: "f2b5",
+    parent_id: 0,
+  },
+  {
+    id: 4,
+    name: "Էլեկտրոնիկա",
+    icon: "fa-microchip",
+    code: "f2db",
+    parent_id: 0,
+  },
+  { id: 5, name: "Հագուստ", icon: "fa-shirt", code: "f553", parent_id: 0 },
+  { id: 6, name: "Կոշիկ", icon: "fa-shoe-prints", code: "f54b", parent_id: 0 },
+  { id: 7, name: "Տուն և այգի", icon: "fa-house", code: "e00d", parent_id: 0 },
+  {
+    id: 8,
+    name: "Մանկական ապրանքներ",
+    icon: "fa-baby",
+    code: "f77c",
+    parent_id: 0,
+  },
+  {
+    id: 9,
+    name: "Գեղեցկություն և առողջություն",
+    icon: "fa-spa",
+    code: "f5bb",
+    parent_id: 0,
+  },
+  {
+    id: 10,
+    name: "Կենցաղային տեխնիկա",
+    icon: "fa-blender",
+    code: "f517",
+    parent_id: 0,
+  },
   {
     id: 11,
+    name: "Սպորտ և հանգիստ",
+    icon: "fa-futbol",
+    code: "f1e3",
+    parent_id: 0,
+  },
+  {
+    id: 12,
     name: "Շինարարություն և վերանորոգում",
     icon: "fa-hammer",
     code: "f6e3",
+    parent_id: 0,
   },
-  { id: 12, name: "Սննդամթերք", icon: "fa-utensils", code: "f2e7" },
-  { id: 13, name: "Դեղատուն", icon: "fa-prescription-bottle", code: "f485" },
-  { id: 14, name: "Կենդանիների համար ապրանքներ", icon: "fa-paw", code: "f1b0" },
-  { id: 15, name: "Գրքեր", icon: "fa-book", code: "f02d" },
   {
-    id: 16,
+    id: 13,
+    name: "Սննդամթերք",
+    icon: "fa-utensils",
+    code: "f2e7",
+    parent_id: 0,
+  },
+  {
+    id: 14,
+    name: "Դեղատուն",
+    icon: "fa-prescription-bottle",
+    code: "f485",
+    parent_id: 0,
+  },
+  {
+    id: 15,
+    name: "Կենդանիների համար ապրանքներ",
+    icon: "fa-paw",
+    code: "f1b0",
+    parent_id: 0,
+  },
+  { id: 16, name: "Գրքեր", icon: "fa-book", code: "f02d", parent_id: 0 },
+  {
+    id: 17,
     name: "Տուրիզմ, ձկնորսություն, որս",
     icon: "fa-fish",
     code: "f578",
+    parent_id: 0,
   },
-  { id: 17, name: "Ավտոմոբիլային ապրանքներ", icon: "fa-car", code: "f1b9" },
-  { id: 18, name: "Կահույք", icon: "fa-couch", code: "f4b8" },
   {
-    id: 19,
+    id: 18,
+    name: "Ավտոմոբիլային ապրանքներ",
+    icon: "fa-car",
+    code: "f1b9",
+    parent_id: 0,
+  },
+  { id: 19, name: "Կահույք", icon: "fa-couch", code: "f4b8", parent_id: 0 },
+  {
+    id: 20,
     name: "Հոբբի և ստեղծագործություն",
     icon: "fa-paintbrush",
     code: "f1fc",
+    parent_id: 0,
   },
-  { id: 20, name: "Զարդեր", icon: "fa-gem", code: "f3a5" },
-  { id: 21, name: "Աքսեսուարներ", icon: "fa-glasses", code: "f530" },
-  { id: 22, name: "Խաղեր և կոնսոլներ", icon: "fa-gamepad", code: "f11b" },
-  { id: 23, name: "Գրենական պիտույքներ", icon: "fa-pencil", code: "f040" },
+  { id: 21, name: "Զարդեր", icon: "fa-gem", code: "f3a5", parent_id: 0 },
+  {
+    id: 22,
+    name: "Աքսեսուարներ",
+    icon: "fa-glasses",
+    code: "f530",
+    parent_id: 0,
+  },
+  {
+    id: 23,
+    name: "Խաղեր և կոնսոլներ",
+    icon: "fa-gamepad",
+    code: "f11b",
+    parent_id: 0,
+  },
   {
     id: 24,
-    name: "Մեծահասակների համար ապրանքներ",
-    icon: "fa-heart",
-    code: "f004",
+    name: "Գրենական պիտույքներ",
+    icon: "fa-pencil",
+    code: "f040",
+    parent_id: 0,
   },
   {
     id: 25,
+    name: "Մեծահասակների համար ապրանքներ",
+    icon: "fa-heart",
+    code: "f004",
+    parent_id: 0,
+  },
+  {
+    id: 26,
     name: "Հնաոճ իրեր և կոլեկցիոնիրում",
     icon: "fa-coins",
     code: "f51e",
+    parent_id: 0,
   },
-  { id: 26, name: "Թվային ապրանքներ", icon: "fa-file-code", code: "f1c9" },
   {
     id: 27,
+    name: "Թվային ապրանքներ",
+    icon: "fa-file-code",
+    code: "f1c9",
+    parent_id: 0,
+  },
+  {
+    id: 28,
     name: "Կենցաղային քիմիա և հիգիենա",
     icon: "fa-pump-soap",
     code: "e06b",
+    parent_id: 0,
   },
-  { id: 28, name: "Երաժշտություն և վիդեո", icon: "fa-music", code: "f001" },
+  {
+    id: 29,
+    name: "Երաժշտություն և վիդեո",
+    icon: "fa-music",
+    code: "f001",
+    parent_id: 0,
+  },
 ];
 
 export const subCategories = [

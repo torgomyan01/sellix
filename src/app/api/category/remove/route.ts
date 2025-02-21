@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
-import mysql, { Connection, FieldPacket, QueryResult } from "mysql2/promise";
-import { getDbConnection, SQL } from "@/utils/consts";
+import { PrismaClient } from "@prisma/client";
 
 export const dynamic = "force-dynamic";
+
+const prisma = new PrismaClient();
 
 export async function POST(request: Request) {
   try {
@@ -10,16 +11,14 @@ export async function POST(request: Request) {
       id: string;
     } = await request.json();
 
-    const db: Connection = await mysql.createConnection(getDbConnection);
+    await prisma.category.deleteMany({ where: { parent_id: requestData.id } });
 
-    const [result]: [QueryResult, FieldPacket[]] = await db.execute(
-      SQL.REMOVE_CATEGORY(requestData.id),
-    );
-
-    await db.end();
+    const remove = await prisma.category.delete({
+      where: requestData,
+    });
 
     return NextResponse.json({
-      data: result,
+      data: remove,
       error: "",
     });
   } catch (error) {
