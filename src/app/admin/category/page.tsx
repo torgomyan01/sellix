@@ -122,7 +122,8 @@ function AddCategory() {
     });
   }
 
-  function closeModalAddCategory(type: IUpdateCategoryType | null) {
+  function closeModalAddCategory() {
+    const type = modalCreateSubCat.type;
     setModalCreateSubCat({
       status: false,
       selectedCategory: null,

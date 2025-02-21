@@ -39,7 +39,6 @@ function ModalCrateSubcategory({ open, handleClose }: IProps) {
           if (data?.data) {
             setLoading(false);
             toast.success("Կատեգորիան հաջողությամբ ավելացվել է");
-            handleClose(open.type);
           }
         })
         .catch(() => {
@@ -50,12 +49,12 @@ function ModalCrateSubcategory({ open, handleClose }: IProps) {
   }
 
   return (
-    <Dialog open={open.status} onClose={() => handleClose(null)}>
+    <Dialog open={open.status} onClose={handleClose}>
       <DialogTitle>
         <div className="flex-je-c">
           <i
             className="fa-regular fa-xmark-large text-[15px] cursor-pointer"
-            onClick={() => handleClose(null)}
+            onClick={handleClose}
           ></i>
         </div>
       </DialogTitle>
