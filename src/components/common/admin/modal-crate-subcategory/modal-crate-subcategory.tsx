@@ -39,6 +39,7 @@ function ModalCrateSubcategory({ open, handleClose }: IProps) {
           if (data?.data) {
             setLoading(false);
             toast.success("Կատեգորիան հաջողությամբ ավելացվել է");
+            handleClose();
           }
         })
         .catch(() => {
