@@ -14,7 +14,7 @@ interface IProps {
     selectedCategory: ICategory | null;
     type: IUpdateCategoryType | null;
   };
-  handleClose: (_type: IUpdateCategoryType | null) => void;
+  handleClose: () => void;
 }
 
 function ModalCrateSubcategory({ open, handleClose }: IProps) {

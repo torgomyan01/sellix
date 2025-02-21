@@ -10,7 +10,6 @@ import { GetAllCategory, GetSubCategory, RemoveCategory } from "@/utils/api";
 import { printStyleHtml } from "@/utils/helpers";
 import { toast } from "react-toastify";
 import ModalCrateSubcategory from "@/components/common/admin/modal-crate-subcategory/modal-crate-subcategory";
-import { log } from "node:util";
 
 function AddCategory() {
   const [categoriesResult, setCategoriesResult] = useState<ICategory[]>();
