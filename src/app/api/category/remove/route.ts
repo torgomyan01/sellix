@@ -7,21 +7,34 @@ const prisma = new PrismaClient();
 
 export async function POST(request: Request) {
   try {
-    const requestData: {
-      id: string;
-    } = await request.json();
+    // Ստանալ request-ի տվյալները
+    const requestData: { id: number } = await request.json();
 
-    await prisma.category.deleteMany({ where: { parent_id: requestData.id } });
+    // Ստուգել, արդյոք id-ն կա
+    if (!requestData?.id) {
+      return NextResponse.json({
+        data: {},
+        error: "Id not found",
+      });
+    }
 
-    const remove = await prisma.category.delete({
-      where: requestData,
+    // Ջնջել բոլոր ենթակատեգորիաները
+    await prisma.category.deleteMany({
+      where: { parent_id: requestData.id },
     });
 
+    // Ջնջել հիմնական կատեգորիան
+    const remove = await prisma.category.delete({
+      where: { id: requestData.id },
+    });
+
+    // Վերադարձնել հաջողության պատասխան
     return NextResponse.json({
       data: remove,
       error: "",
     });
   } catch (error) {
+    // Վերադարձնել սխալի պատասխան
     return NextResponse.json({
       status: 0,
       error: (error as Error).message || "Unknown error",
