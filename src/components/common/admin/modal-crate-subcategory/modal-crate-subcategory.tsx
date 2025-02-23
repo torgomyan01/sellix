@@ -24,29 +24,33 @@ function ModalCrateSubcategory({ open, handleClose }: IProps) {
     event.preventDefault();
     const form = event.currentTarget as HTMLFormElement;
 
-    if (open.selectedCategory) {
-      const formData: ICreateCategory = {
-        name: form["nameCategory"].value,
-        parent_id: open.selectedCategory.id,
-        icon_name: "",
-        icon_code: "",
-      };
+    const name: string[] = form["nameCategory"].value.split(",");
 
-      setLoading(true);
+    name.forEach((item: string) => {
+      if (open.selectedCategory) {
+        const formData: ICreateCategory = {
+          name: item,
+          parent_id: open.selectedCategory.id,
+          icon_name: "",
+          icon_code: "",
+        };
 
-      CreateCategory(formData)
-        .then(({ data }) => {
-          if (data?.data) {
+        setLoading(true);
+
+        CreateCategory(formData)
+          .then(({ data }) => {
+            if (data?.data) {
+              setLoading(false);
+              toast.success("Կատեգորիան հաջողությամբ ավելացվել է");
+              handleClose();
+            }
+          })
+          .catch(() => {
+            toast.error("Տեղի է ունեցել խնդիր խնդրում ենք ստուգեք քոնսոլը");
             setLoading(false);
-            toast.success("Կատեգորիան հաջողությամբ ավելացվել է");
-            handleClose();
-          }
-        })
-        .catch(() => {
-          toast.error("Տեղի է ունեցել խնդիր խնդրում ենք ստուգեք քոնսոլը");
-          setLoading(false);
-        });
-    }
+          });
+      }
+    });
   }
 
   return (
@@ -70,6 +74,7 @@ function ModalCrateSubcategory({ open, handleClose }: IProps) {
               className="w-full"
               name="nameCategory"
               variant="outlined"
+              required
             />
           </div>
 

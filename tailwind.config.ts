@@ -76,7 +76,7 @@ export default {
         DEFAULT: "300ms",
       },
       borderColor: {
-        DEFAULT: "#d1d5db",
+        DEFAULT: "#e7e9ee",
       },
     },
   },

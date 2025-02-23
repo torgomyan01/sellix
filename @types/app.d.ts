@@ -14,3 +14,9 @@ declare interface ICategory {
 }
 
 type IUpdateCategoryType = "category" | "subcategory" | "subsubcategory";
+
+declare interface ICatalog {
+  catalogSite: {
+    status: boolean;
+  };
+}
