@@ -1,5 +1,6 @@
 export const SITE_URL = {
   HOME: "/",
+  PRODUCT: "/product",
   ADMIN: "/admin",
   ADMIN_CATEGORY: "admin/category",
   ADMIN_CATEGORY_ADD: "admin/category/add",

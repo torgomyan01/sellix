@@ -3,7 +3,7 @@
 import "swiper/css";
 import "swiper/css/autoplay";
 import MainTemplate from "@/components/common/main-template/main-template";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
 import HomeFormSearch from "@/components/common/home/home-form-search";
 import CatalogSite from "@/components/common/home/catalog-btn/catalog-btn";
@@ -47,6 +47,7 @@ const StyledRating = styled(Rating)({
 
 export default function Home() {
   const swiperRef = useRef<SwiperCore | null>(null);
+  const [activeSlider, setActiveSlider] = useState<number>(0);
 
   function PrevSlider() {
     if (swiperRef.current) {
@@ -60,9 +61,19 @@ export default function Home() {
     }
   }
 
+  function SliderChange(swiper: SwiperCore) {
+    setActiveSlider(swiper.activeIndex);
+  }
+
+  function changeSlider(index: number) {
+    if (swiperRef.current) {
+      swiperRef.current.slideTo(index); // Տեղափոխվել տվյալ ինդեքսի սլայդ
+    }
+  }
+
   return (
     <MainTemplate>
-      <div className="bg-[#EFF0F6] w-full h-full px-4 md:px-10 pt-6 overflow-hidden">
+      <div className="bg-[#EFF0F6] w-full h-full px-4 md:px-10 pt-6 overflow-y-auto pb-10">
         <div className="container">
           <div className="flex-jsb-c">
             <Image
@@ -94,7 +105,7 @@ export default function Home() {
               {breadcrumbs}
             </Breadcrumbs>
           </div>
-          <div className="wrapper px-4 py-6 mt-4">
+          <div className="wrapper px-4 py-6 mt-4 pb-20">
             <div className="w-full grid grid-cols-2 gap-6">
               <div className="w-full rounded-[20px] border p-4">
                 <div className="w-full h-[316px] rounded-[12px] overflow-hidden relative">
@@ -106,6 +117,7 @@ export default function Home() {
                     onSwiper={(swiper) => (swiperRef.current = swiper)}
                     spaceBetween={50}
                     slidesPerView={1}
+                    onSlideChange={SliderChange}
                     allowSlideNext={true}
                   >
                     {sliderItems.map((item) => (
@@ -182,14 +194,15 @@ export default function Home() {
                   <div className="w-[60%]">
                     <h3 className="text-[16px] font-bold mb-2">Նկարներ</h3>
                     <div className="w-full flex-js-s flex-wrap">
-                      {sliderItems.map((item) => (
+                      {sliderItems.map((item, index) => (
                         <Image
                           key={RandomKey()}
                           src={item}
                           alt="product"
+                          onClick={() => changeSlider(index)}
                           width={120}
                           height={80}
-                          className="w-[calc(100%_/_3)] h-[80px] rounded-[8px] border-[4px] object-cover cursor-pointer transition hover:border-gray-300"
+                          className={`w-[calc(100%_/_3)] h-[80px] rounded-[8px] border-[4px] ${activeSlider === index ? "border-blue" : ""} object-cover cursor-pointer transition `}
                         />
                       ))}
                     </div>
@@ -218,7 +231,177 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
+                <div className="w-full flex-jsb-s mt-6 gap-6">
+                  <div className="w-[60%]">
+                    <div className="w-full flex-jsb-c">
+                      <h3 className="text-[16px] font-bold mb-2">
+                        Թողնել կարծիք
+                      </h3>
+                      <Rating
+                        name="half-rating"
+                        defaultValue={4}
+                        precision={1}
+                      />
+                    </div>
+
+                    <div className="w-full mt-2 h-[176px] rounded-[8px] border border-[#D9D9D9] bg-[#EFF0F6] p-4">
+                      <p className="text-[16px] text-[#4D4D4D]">Գնել եմ․․․</p>
+                      <div className="w-full flex-js-s flex-wrap mt-2 gap-2">
+                        <span className="bg-white hover:bg-[#fdfdfd] rounded-[4px] px-[12px] py-1 cursor-pointer text-[14px]">
+                          Գոհ եմ
+                        </span>
+                        <span className="bg-white hover:bg-[#fdfdfd] rounded-[4px] px-[12px] py-1 cursor-pointer text-[14px]">
+                          Գոհ չեմ
+                        </span>
+                        <span className="bg-white hover:bg-[#fdfdfd] rounded-[4px] px-[12px] py-1 cursor-pointer text-[14px]">
+                          Շնորհակալ եմ վաճառողից
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="w-[40%]">
+                    <h3 className="text-[16px] font-bold mb-2 mt-1">
+                      Տարբեր արժույթներով
+                    </h3>
+
+                    <div className="w-full mt-4 rounded-[20px] border p-3 h-[176px] flex-jsb-s flex-col">
+                      <div className="w-full flex-jsb-c border-b py-1">
+                        <h5 className="text-[18px] font-bold">5000</h5>
+                        <div className="flex-je-c text-[18px] gap-1 font-bold">
+                          <Image
+                            src="/img/icons/flag-usa.png"
+                            alt="flag icon"
+                            width={14}
+                            height={14}
+                          />
+                          $
+                        </div>
+                      </div>
+                      <div className="w-full flex-jsb-c border-b py-1">
+                        <h5 className="text-[18px] font-bold">1 982 800,00</h5>
+                        <div className="flex-je-c text-[18px] gap-1 font-bold">
+                          <Image
+                            src="/img/icons/flag-am.png"
+                            alt="flag icon"
+                            width={14}
+                            height={14}
+                          />
+                          ֏
+                        </div>
+                      </div>
+                      <div className="w-full flex-jsb-c border-b py-1">
+                        <h5 className="text-[18px] font-bold">4 841,16</h5>
+                        <div className="flex-je-c text-[18px] gap-1 font-bold">
+                          <Image
+                            src="/img/icons/flag-eu.png"
+                            alt="flag icon"
+                            width={14}
+                            height={14}
+                          />
+                          €
+                        </div>
+                      </div>
+                      <div className="w-full flex-jsb-c py-1">
+                        <h5 className="text-[18px] font-bold">469 691,29</h5>
+                        <div className="flex-je-c text-[18px] gap-1 font-bold">
+                          <Image
+                            src="/img/icons/flag-ru.png"
+                            alt="flag icon"
+                            width={14}
+                            height={14}
+                          />
+                          ₽
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="w-full mt-4 border rounded-[20px] p-4">
+                  <div className="w-full flex-js-c gap-2">
+                    <Image
+                      src="/img/product/user.png"
+                      alt="Owner this product"
+                      width={64}
+                      height={64}
+                      className="object-cover object-center rounded-full"
+                    />
+                    <div>
+                      <h3 className="text-[18px]">Andranik Torgomyan</h3>
+                      <div>
+                        <Rating
+                          name="half-rating"
+                          defaultValue={5}
+                          precision={1}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <ul className="mt-6">
+                    <li className="text-[18px] text-gray-500 mb-3">
+                      Ընդհանուր կարծիքներ։ 105
+                    </li>
+                    <li className="text-[18px] text-gray-500 mb-3">
+                      Հայտարարությունների Քանակը։ 35
+                    </li>
+                    <li className="text-[18px] text-gray-500">
+                      Կպատասխանի Ձեզ 3 ժամվա ընթացքում
+                    </li>
+                  </ul>
+                </div>
               </div>
+            </div>
+
+            <div className="w-full mt-16 flex-jsb-s gap-6 flex-wrap">
+              {Array.from({ length: 4 }).map((_, i) => (
+                <div
+                  key={RandomKey()}
+                  className="border rounded-[12px] p-3 hover:border-gray-400 w-[calc((100%_/_4)_-_18px)]"
+                >
+                  <Image
+                    src={`/img/product/product-${i + 1}.png`}
+                    alt="product-1.png"
+                    width={250}
+                    height={172}
+                    className="w-full h-[172px] object-cover object-center rounded-[7px]"
+                  />
+                  <h3 className="text-[22px] font-bold mt-2">$5000</h3>
+                  <p className="text-[16px]">
+                    3 սենյականոց բնակարան նորակառույց շենքում Մոնթե Մելքոնյան
+                    փողոցում, 93 քմ, նախավերջին հարկ
+                  </p>
+
+                  <div className="w-full flex-je-c mt-6 cursor-pointer text-blue">
+                    Դիտել
+                    <i className="fa-solid fa-chevron-right ml-2"></i>
+                  </div>
+                </div>
+              ))}
+              {Array.from({ length: 4 }).map((_, i) => (
+                <div
+                  key={RandomKey()}
+                  className="border rounded-[12px] p-3 hover:border-gray-400 w-[calc((100%_/_4)_-_18px)]"
+                >
+                  <Image
+                    src={`/img/product/product-${i + 1}.png`}
+                    alt="product-1.png"
+                    width={250}
+                    height={172}
+                    className="w-full h-[172px] object-cover object-center rounded-[7px]"
+                  />
+                  <h3 className="text-[22px] font-bold mt-2">$5000</h3>
+                  <p className="text-[16px]">
+                    3 սենյականոց բնակարան նորակառույց շենքում Մոնթե Մելքոնյան
+                    փողոցում, 93 քմ, նախավերջին հարկ
+                  </p>
+
+                  <div className="w-full flex-je-c mt-6 cursor-pointer text-blue">
+                    Դիտել
+                    <i className="fa-solid fa-chevron-right ml-2"></i>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

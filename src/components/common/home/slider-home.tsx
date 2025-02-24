@@ -1,8 +1,9 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import Image from "next/image";
-import { fakeProducts } from "@/utils/consts";
+import { fakeProducts, SITE_URL } from "@/utils/consts";
 import { RandomKey } from "@/utils/helpers";
+import Link from "next/link";
 
 function SliderHome() {
   return (
@@ -27,16 +28,18 @@ function SliderHome() {
       >
         {[...fakeProducts, ...fakeProducts].map((item) => (
           <SwiperSlide key={RandomKey()}>
-            <div className="w-full h-auto">
-              <Image
-                src={item.imageURL}
-                alt={item.title}
-                width={120}
-                height={54}
-                className="w-full rounded-[8px] h-[150px] object-cover object-center shadow"
-              />
-              <h3 className="mt-2 text-[16px]">{item.title}</h3>
-            </div>
+            <Link href={SITE_URL.PRODUCT}>
+              <div className="w-full h-auto">
+                <Image
+                  src={item.imageURL}
+                  alt={item.title}
+                  width={120}
+                  height={54}
+                  className="w-full rounded-[8px] h-[150px] object-cover object-center shadow"
+                />
+                <h3 className="mt-2 text-[16px]">{item.title}</h3>
+              </div>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>
