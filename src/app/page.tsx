@@ -1,8 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import "swiper/css";
-import "swiper/css/autoplay";
 import HomeFormSearch from "@/components/common/home/home-form-search";
 import MainTemplate from "@/components/common/main-template/main-template";
 import SliderHome from "@/components/common/home/slider-home";
