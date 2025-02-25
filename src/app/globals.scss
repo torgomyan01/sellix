@@ -63,7 +63,7 @@ body {
   max-width: 1260px;
   margin: 0 auto;
   @media (max-width: 1290px) {
-    max-width: calc(100% - 15px);
+    max-width: 100%;
   }
 }
 
