@@ -12,6 +12,7 @@ import Link from "next/link";
 import { Breadcrumbs, Rating, styled, Typography } from "@mui/material";
 import { RandomKey } from "@/utils/helpers";
 import Slider from "react-slick";
+import { SITE_URL } from "@/utils/consts";
 
 const sliderItems = [
   "/img/product/img.png",
@@ -22,16 +23,20 @@ const sliderItems = [
   "/img/product/img_5.png",
 ];
 const breadcrumbs = [
-  <Link key="1" color="inherit" href="/">
+  <Link key="1" className="text-[14px] sm:text-[16px]" color="inherit" href="/">
     Գլխաոր էջ
   </Link>,
-  <Link key="2" color="inherit" href="#">
+  <Link key="2" className="text-[14px] sm:text-[16px]" color="inherit" href="#">
     Տրանսպորտ
   </Link>,
-  <Link key="2" color="inherit" href="#">
+  <Link key="2" className="text-[14px] sm:text-[16px]" color="inherit" href="#">
     Ավտոմեքենաներ
   </Link>,
-  <Typography key="3" sx={{ color: "text.primary" }}>
+  <Typography
+    key="3"
+    className="!text-[14px] sm:text-[16px]"
+    sx={{ color: "text.primary" }}
+  >
     BMW
   </Typography>,
 ];
@@ -75,18 +80,15 @@ export default function Home() {
       <div className="bg-[#EFF0F6] w-full h-full px-4 xl:px-10 pt-6 overflow-y-auto pb-10">
         <div className="container">
           <div className="flex-jsb-c">
-            <Image
-              src="img/SELLIX.svg"
-              alt="sellix home logo"
-              width={230}
-              height={54}
-              className="w-[110px] h-auto block"
-            />
-
-            <div className="flex-jc-c gap-2">
-              <HomeFormSearch />
-              <CatalogSite />
-            </div>
+            <Link href={SITE_URL.HOME}>
+              <Image
+                src="img/SELLIX.svg"
+                alt="sellix home logo"
+                width={230}
+                height={54}
+                className="w-[110px] h-auto block"
+              />
+            </Link>
 
             <div className="flex-je-c gap-2">
               <button className="border text-black px-4 py-2 rounded-[8px] text-[14px] sm:text-[16px] transition hover:border-black hidden sm:block">
@@ -99,15 +101,22 @@ export default function Home() {
               </button>
             </div>
           </div>
+
+          <div className="flex-jc-c gap-2 mt-4 sm:mt-6 w-full min-[632px]:w-auto">
+            <HomeFormSearch />
+
+            <CatalogSite />
+          </div>
+
           <div className="mt-10">
             <Breadcrumbs separator="›" aria-label="breadcrumb">
               {breadcrumbs}
             </Breadcrumbs>
           </div>
-          <div className="wrapper px-4 py-6 mt-4 pb-20">
+          <div className="wrapper px-4 py-4 sm:py-6 mt-4 pb-20">
             <div className="w-full grid grid-cols-1 xl:grid-cols-2 gap-6">
-              <div className="w-full rounded-[20px] border p-4">
-                <div className="w-full h-[316px] rounded-[12px] overflow-hidden relative">
+              <div className="w-full rounded-[20px] sm:border sm:p-4">
+                <div className="w-full h-[250px] sm:h-[316px] rounded-[12px] overflow-hidden relative">
                   <i
                     onClick={PrevSlider}
                     className="fa-light fa-chevron-left absolute left-4 top-[50%] transform translate-y-[-50%] z-20 text-white text-[30px] cursor-pointer"
@@ -115,7 +124,7 @@ export default function Home() {
                   <Slider
                     ref={sliderRef}
                     {...settings}
-                    className="h-[316px]"
+                    className="h-[250px] sm:h-[316px]"
                     afterChange={(e) => setActiveSlider(e)}
                   >
                     {sliderItems.map((item) => (
@@ -125,7 +134,7 @@ export default function Home() {
                         alt="product"
                         width={300}
                         height={300}
-                        className="w-full h-[316px] object-cover"
+                        className="w-full h-[250px] sm:h-[316px] object-cover"
                       />
                     ))}
                   </Slider>
@@ -133,6 +142,22 @@ export default function Home() {
                     onClick={NextSlider}
                     className="fa-light fa-chevron-right absolute right-4 top-[50%] transform translate-y-[-50%] z-20 text-white text-[30px] cursor-pointer"
                   ></i>
+                </div>
+
+                <div className="w-full md:w-[60%] mb-6 md:md-0 mt-4">
+                  <div className="w-full flex-js-s flex-wrap">
+                    {sliderItems.map((item, index) => (
+                      <Image
+                        key={RandomKey()}
+                        src={item}
+                        alt="product"
+                        onClick={() => sliderRef.current?.slickGoTo(index)}
+                        width={120}
+                        height={80}
+                        className={`w-[calc(100%_/_3)] h-[80px] rounded-[8px] border-[4px] active:border-[#dadada] ${activeSlider === index ? "border-blue" : ""} object-cover cursor-pointer transition `}
+                      />
+                    ))}
+                  </div>
                 </div>
 
                 <div className="w-full flex-jsb-c mt-1">
@@ -167,22 +192,22 @@ export default function Home() {
                   </span>
                 </div>
 
-                <div className="flex-js-s sm:flex-jsb-c mt-10 flex-col sm:flex-row gap-2">
+                <div className="flex-jsb-c mt-10 gap-2">
                   <button className="px-4 py-2 bg-[#EFF0F6] rounded-[8px] flex-jc-c gap-1 text-[14px]">
                     <i className="fa-solid fa-circle-dollar text-[#6CDE07] text-[16px]"></i>
                     Աշխատիր գումար
                   </button>
 
-                  <div className="flex-js-s sm:flex-je-c gap-2 flex-col sm:flex-row">
+                  <div className="flex-js-s sm:flex-je-c gap-2">
                     <button className="bg-blue text-white px-3 py-2 rounded-[8px] transition hover:bg-[#1550E6]">
-                      <i className="fa-solid fa-envelope mr-2 sm:mr-0 min-[1152px]:mr-2"></i>
-                      <span className="sm:hidden min-[1152px]:inline">
+                      <i className="fa-solid fa-envelope min-[1152px]:mr-2"></i>
+                      <span className="hidden min-[1152px]:inline">
                         Կապ վաճ․ հետ
                       </span>
                     </button>
                     <button className="bg-[#099F63] hover:bg-[#058350] text-white px-3 py-2 rounded-[8px] transition ">
-                      <i className="fa-solid fa-phone mr-2 sm:mr-0 min-[1152px]:mr-2"></i>
-                      <span className="sm:hidden min-[1152px]:inline">
+                      <i className="fa-solid fa-phone min-[1152px]:mr-2"></i>
+                      <span className="hidden min-[1152px]:inline">
                         Զանգահարել
                       </span>
                     </button>
@@ -192,7 +217,7 @@ export default function Home() {
 
               <div>
                 <div className="w-full flex-jsb-s flex-col md:flex-row">
-                  <div className="w-full md:w-[60%] mb-6 md:md-0">
+                  <div className="w-full md:w-[60%] mb-6 md:md-0 hidden sm:block">
                     <h3 className="text-[16px] font-bold mb-2">Նկարներ</h3>
                     <div className="w-full flex-js-s flex-wrap">
                       {sliderItems.map((item, index) => (
@@ -263,7 +288,7 @@ export default function Home() {
                   <div className="w-full sm:w-[40%]">
                     <h3 className="text-[16px] font-bold mb-2 mt-1">Արժեքը</h3>
 
-                    <div className="w-full mt-4 rounded-[20px] border p-3 h-[176px] flex-jsb-s flex-col">
+                    <div className="w-full mt-[14px] rounded-[20px] border p-3 h-[176px] flex-jsb-s flex-col">
                       <div className="w-full flex-jsb-c border-b py-1">
                         <h5 className="text-[18px] font-bold">5000</h5>
                         <div className="flex-je-c text-[18px] gap-1 font-bold">
@@ -352,7 +377,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="w-full mt-16 gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <h3 className="mt-16 text-[24px] font-bold mb-4">Դիտեք նաև</h3>
+
+            <div className="w-full gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {Array.from({ length: 4 }).map((_, i) => (
                 <div
                   key={RandomKey()}

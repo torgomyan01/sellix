@@ -16,10 +16,10 @@ function HomeFormSearch() {
   }
 
   return (
-    <div className="flex-jc-c w-full relative z-50">
+    <div className="flex-jc-c relative z-50">
       <form
         action="#"
-        className="min-w-full min-[632px]:min-w-[600px] relative"
+        className={`min-w-full relative min-[632px]:min-w-[600px]`}
       >
         <label
           onClick={searchResult}
