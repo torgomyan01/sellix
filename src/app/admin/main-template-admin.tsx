@@ -1,7 +1,5 @@
 "use client";
 
-import "swiper/css";
-import "swiper/css/autoplay";
 import React from "react";
 import { AppProvider, Navigation } from "@toolpad/core/AppProvider";
 import { DashboardLayout } from "@toolpad/core/DashboardLayout";
