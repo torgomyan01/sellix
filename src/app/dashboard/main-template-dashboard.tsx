@@ -10,34 +10,29 @@ import { ToastContainer } from "react-toastify";
 const NAVIGATION: Navigation = [
   {
     kind: "header",
-    title: "Կատեգորիաներ",
+    title: "Հայտարարություներ",
   },
   {
     segment: SITE_URL.DASHBOARD_POSTS,
-    title: "Հայտարարություններ",
-    icon: <i className="fa-regular fa-layer-group"></i>,
+    title: "Բոլորը",
+    icon: <i className="fa-solid fa-megaphone"></i>,
   },
   {
     segment: SITE_URL.ADMIN_CATEGORY_ADD,
     title: "Ավելացնել",
-    icon: <i className="fa-regular fa-plus"></i>,
-  },
-  {
-    segment: SITE_URL.ADMIN_CATEGORY_FORM,
-    title: "Աշխատել գումար",
-    icon: <i className="fa-light fa-input-numeric"></i>,
-  },
-  {
-    segment: "orders",
-    title: "Orders",
-    icon: "",
+    icon: <i className="fa-regular fa-plus "></i>,
   },
   {
     kind: "divider",
   },
+  // {
+  //   kind: "header",
+  //   title: "Աշխատել գումար",
+  // },
   {
-    kind: "header",
-    title: "Analytics",
+    segment: SITE_URL.DASHBOARD_WORK,
+    title: "Աշխատել գումար",
+    icon: <i className="fa-solid fa-circle-dollar text-green-500"></i>,
   },
   {
     segment: "reports",

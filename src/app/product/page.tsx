@@ -50,7 +50,7 @@ const StyledRating = styled(Rating)({
   },
 });
 
-export default function Home() {
+export default function Product() {
   const sliderRef = useRef<Slider | null>(null);
 
   const settings = {
@@ -144,7 +144,7 @@ export default function Home() {
                   ></i>
                 </div>
 
-                <div className="w-full md:w-[60%] mb-6 md:md-0 mt-4">
+                <div className="w-full md:w-[60%] mb-6 md:md-0 mt-4 block sm:hidden">
                   <div className="w-full flex-js-s flex-wrap">
                     {sliderItems.map((item, index) => (
                       <Image
@@ -379,7 +379,7 @@ export default function Home() {
 
             <h3 className="mt-16 text-[24px] font-bold mb-4">Դիտեք նաև</h3>
 
-            <div className="w-full gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="w-full gap-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {Array.from({ length: 4 }).map((_, i) => (
                 <div
                   key={RandomKey()}
