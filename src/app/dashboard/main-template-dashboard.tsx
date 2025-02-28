@@ -6,6 +6,7 @@ import { DashboardLayout } from "@toolpad/core/DashboardLayout";
 import { PageContainer } from "@toolpad/core/PageContainer";
 import { SITE_URL } from "@/utils/consts";
 import { ToastContainer } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const NAVIGATION: Navigation = [
   {
@@ -63,9 +64,24 @@ export default function MainTemplateDashboard({
 }: {
   children: React.ReactNode;
 }) {
+  const router = useRouter();
+
+  function changeUrl(string: string | URL) {
+    if (typeof string === "string") {
+      router.push(string);
+    }
+  }
+
+  const routerObj = {
+    pathname: location.pathname,
+    searchParams: new URLSearchParams(),
+    navigate: (path: string | URL) => changeUrl(path),
+  };
+
   return (
     <AppProvider
       navigation={NAVIGATION}
+      router={routerObj}
       branding={{
         logo: "",
         title: "SELLIX",

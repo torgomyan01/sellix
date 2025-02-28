@@ -79,6 +79,9 @@
 .fa-eye:before {
     content: "\f06e";
 }
+.fa-copy:before {
+    content: "\f0c5";
+}
 
 
 /*---------------------------------*/

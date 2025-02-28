@@ -11,8 +11,6 @@ export default function Posts() {
 
   return (
     <MainTemplateDashboard>
-      <h1 className="text-[18px] font-bold">Իմ Հայտարարություները</h1>
-
       <div className="mt-6 pl-6 bg-white relative mb-[-20px] border-b w-full overflow-x-auto">
         <Tabs value={activeTab} onChange={(e, value) => setActiveTab(value)}>
           <Tab label="Ակտիվ" />
