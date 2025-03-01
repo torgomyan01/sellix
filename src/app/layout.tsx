@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.scss";
 import "../icons/icons.css";
+import NextTopLoader from "nextjs-toploader";
 
 export const metadata: Metadata = {
   title: "SELLIX",
@@ -14,7 +15,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="hy" suppressHydrationWarning={true}>
-      <body className="h-[100dvh]">{children}</body>
+      <body className="h-[100dvh]">
+        <NextTopLoader />
+        {children}
+      </body>
     </html>
   );
 }

@@ -193,10 +193,12 @@ export default function Product() {
                 </div>
 
                 <div className="flex-jsb-c mt-10 gap-2">
-                  <button className="px-4 py-2 bg-[#EFF0F6] rounded-[8px] flex-jc-c gap-1 text-[14px]">
-                    <i className="fa-solid fa-circle-dollar text-[#6CDE07] text-[16px]"></i>
-                    Աշխատիր գումար
-                  </button>
+                  <Link href={SITE_URL.HOW_WORKING}>
+                    <button className="px-4 py-2 bg-[#EFF0F6] rounded-[8px] flex-jc-c gap-1 text-[14px]">
+                      <i className="fa-solid fa-circle-dollar text-[#6CDE07] text-[16px]"></i>
+                      Աշխատիր գումար
+                    </button>
+                  </Link>
 
                   <div className="flex-js-s sm:flex-je-c gap-2">
                     <button className="bg-blue text-white px-3 py-2 rounded-[8px] transition hover:bg-[#1550E6]">

@@ -10,6 +10,11 @@ import { useRouter } from "next/navigation";
 
 const NAVIGATION: Navigation = [
   {
+    segment: SITE_URL.DASHBOARD,
+    title: "Գլխաոր",
+    icon: <i className="fa-solid fa-house"></i>,
+  },
+  {
     kind: "header",
     title: "Հայտարարություներ",
   },
@@ -34,6 +39,19 @@ const NAVIGATION: Navigation = [
     segment: SITE_URL.DASHBOARD_WORK,
     title: "Աշխատել գումար",
     icon: <i className="fa-solid fa-circle-dollar text-green-500"></i>,
+  },
+  {
+    segment: SITE_URL.DASHBOARD_WORK_MONEY,
+    title: "Ինչպես աշխատել գումար",
+    icon: <i className="fa-light fa-question"></i>,
+  },
+  {
+    kind: "divider",
+  },
+  {
+    segment: SITE_URL.DASHBOARD_SETTINGS,
+    title: "Կարգաորումներ",
+    icon: <i className="fa-regular fa-gear"></i>,
   },
   {
     segment: "reports",
@@ -61,8 +79,10 @@ const NAVIGATION: Navigation = [
 
 export default function MainTemplateDashboard({
   children,
+  pathname,
 }: {
   children: React.ReactNode;
+  pathname: string;
 }) {
   const router = useRouter();
 
@@ -73,7 +93,7 @@ export default function MainTemplateDashboard({
   }
 
   const routerObj = {
-    pathname: location.pathname,
+    pathname,
     searchParams: new URLSearchParams(),
     navigate: (path: string | URL) => changeUrl(path),
   };

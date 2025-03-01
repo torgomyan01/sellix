@@ -16,7 +16,7 @@ function HomeFormSearch() {
   }
 
   return (
-    <div className="flex-jc-c relative z-50">
+    <div className="flex-jc-c relative z-50 w-full min-[632px]:w-auto">
       <form
         action="#"
         className={`min-w-full relative min-[632px]:min-w-[600px]`}

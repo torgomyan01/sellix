@@ -1,9 +1,12 @@
 export const SITE_URL = {
   HOME: "/",
   PRODUCT: "/product",
-  DASHBOARD: "/dashboard",
+  HOW_WORKING: "/how-working",
+  DASHBOARD: "dashboard",
   DASHBOARD_POSTS: "dashboard/posts",
+  DASHBOARD_SETTINGS: "dashboard/settings",
   DASHBOARD_WORK: "dashboard/working",
+  DASHBOARD_WORK_MONEY: "dashboard/working/money",
   ADMIN: "admin",
   ADMIN_CATEGORY: "admin/category",
   ADMIN_CATEGORY_ADD: "admin/category/add",

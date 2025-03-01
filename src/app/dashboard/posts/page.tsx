@@ -5,12 +5,13 @@ import { RandomKey } from "@/utils/helpers";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { useState } from "react";
+import { SITE_URL } from "@/utils/consts";
 
 export default function Posts() {
   const [activeTab, setActiveTab] = useState<number>(0);
 
   return (
-    <MainTemplateDashboard>
+    <MainTemplateDashboard pathname={`/${SITE_URL.DASHBOARD_POSTS}`}>
       <div className="mt-6 pl-6 bg-white relative mb-[-20px] border-b w-full overflow-x-auto">
         <Tabs value={activeTab} onChange={(e, value) => setActiveTab(value)}>
           <Tab label="Ակտիվ" />

@@ -83,6 +83,16 @@
     content: "\f0c5";
 }
 
+.fa-chart-line-up:before {
+    content: "\e0e5";
+}
+.fa-question:before {
+    content: "\3f";
+}
+.fa-gear:before {
+    content: "\f013";
+}
+
 
 /*---------------------------------*/
 
