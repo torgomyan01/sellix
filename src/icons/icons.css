@@ -92,6 +92,9 @@
 .fa-gear:before {
     content: "\f013";
 }
+.fa-upload:before {
+    content: "\f093";
+}
 
 
 /*---------------------------------*/
