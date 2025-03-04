@@ -21,6 +21,12 @@ export const CURRENCY = {
   EUR: "EUR",
 };
 
+export const SERVICES_TYPE: IServicesType = {
+  "Վաճառում եմ": "Վաճառում եմ",
+  "Տալիս եմ վարձով": "Տալիս եմ վարձով",
+  "Ծառայություն եմ մատուծում": "Ծառայություն եմ մատուծում",
+};
+
 //
 // export const API_URL = {
 //   HOST: "http://ytsmpt-api.loc/api",

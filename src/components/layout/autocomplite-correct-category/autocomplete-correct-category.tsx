@@ -51,91 +51,95 @@ function AutocompleteCorrectCategory({ onChange }: IProps) {
   }
 
   return (
-    <div className="w-full flex-je-c gap-2">
+    <>
       {!categoriesResult && (
         <div className="w-full flex-jc-c my-6">
           <CircularProgress />
         </div>
       )}
 
-      <style>
-        {categoriesResult
-          ?.filter((option) => option.parent_id === 0)
-          .map((category: ICategory) =>
-            printStyleHtml(category.icon_name, category.icon_code),
-          )
-          .join("")}
-      </style>
-      {categoriesResult?.length && (
-        <Autocomplete
-          options={categoriesResult.filter((option) => option.parent_id === 0)}
-          value={selectedCategory}
-          className="w-full"
-          getOptionLabel={(option) => option.name}
-          renderOption={(props, option) => {
-            const { key, ...optionProps } = props;
-            return (
-              <Box key={key} component="li" {...optionProps}>
-                <i className={`fa-solid ${option.icon_name} mr-2`}></i>
-                {option.name}
-              </Box>
-            );
-          }}
-          onChange={selectCategory}
-          renderInput={(params) => (
-            <TextField {...params} label="Կատեգորիաներ" />
-          )}
-        />
-      )}
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-2">
+        <style>
+          {categoriesResult
+            ?.filter((option) => option.parent_id === 0)
+            .map((category: ICategory) =>
+              printStyleHtml(category.icon_name, category.icon_code),
+            )
+            .join("")}
+        </style>
+        {categoriesResult?.length && (
+          <Autocomplete
+            options={categoriesResult.filter(
+              (option) => option.parent_id === 0,
+            )}
+            value={selectedCategory}
+            className="w-full"
+            getOptionLabel={(option) => option.name}
+            renderOption={(props, option) => {
+              const { key, ...optionProps } = props;
+              return (
+                <Box key={key} component="li" {...optionProps}>
+                  <i className={`fa-solid ${option.icon_name} mr-2`}></i>
+                  {option.name}
+                </Box>
+              );
+            }}
+            onChange={selectCategory}
+            renderInput={(params) => (
+              <TextField {...params} label="Կատեգորիաներ" />
+            )}
+          />
+        )}
 
-      {categoriesResult && selectedCategory && (
-        <Autocomplete
-          options={categoriesResult.filter(
-            (option) => option.parent_id === selectedCategory.id,
-          )}
-          value={selectedSubCategory}
-          className="w-full"
-          getOptionLabel={(option) => option.name}
-          renderOption={(props, option) => {
-            const { key, ...optionProps } = props;
-            return (
-              <Box key={key} component="li" {...optionProps}>
-                <i className={`fa-solid ${option.icon_name} mr-2`}></i>
-                {option.name}
-              </Box>
-            );
-          }}
-          onChange={selectSubCategory}
-          renderInput={(params) => (
-            <TextField {...params} label="Կատեգորիաներ" />
-          )}
-        />
-      )}
+        {categoriesResult && selectedCategory && (
+          <Autocomplete
+            options={categoriesResult.filter(
+              (option) => option.parent_id === selectedCategory.id,
+            )}
+            value={selectedSubCategory}
+            className="w-full"
+            getOptionLabel={(option) => option.name}
+            renderOption={(props, option) => {
+              const { key, ...optionProps } = props;
+              return (
+                <Box key={key} component="li" {...optionProps}>
+                  <i className={`fa-solid ${option.icon_name} mr-2`}></i>
+                  {option.name}
+                </Box>
+              );
+            }}
+            onChange={selectSubCategory}
+            renderInput={(params) => (
+              <TextField {...params} label="Կատեգորիաներ" />
+            )}
+          />
+        )}
 
-      {categoriesResult && selectedCategory && selectedSubCategory && (
-        <Autocomplete
-          options={categoriesResult.filter(
-            (option) => option.parent_id === selectedSubCategory.id,
-          )}
-          value={selectedSubSubCategory}
-          className="w-full"
-          getOptionLabel={(option) => option.name}
-          renderOption={(props, option) => {
-            const { key, ...optionProps } = props;
-            return (
-              <Box key={key} component="li" {...optionProps}>
-                <i className={`fa-solid ${option.icon_name} mr-2`}></i>
-                {option.name}
-              </Box>
-            );
-          }}
-          onChange={(e, value) => setSelectedSubSubCategory(value)}
-          renderInput={(params) => (
-            <TextField {...params} label="Կատեգորիաներ" />
-          )}
-        />
-      )}
-    </div>
+        {categoriesResult && selectedCategory && selectedSubCategory && (
+          <Autocomplete
+            options={categoriesResult.filter(
+              (option) => option.parent_id === selectedSubCategory.id,
+            )}
+            value={selectedSubSubCategory}
+            className="w-full"
+            getOptionLabel={(option) => option.name}
+            renderOption={(props, option) => {
+              const { key, ...optionProps } = props;
+              return (
+                <Box key={key} component="li" {...optionProps}>
+                  <i className={`fa-solid ${option.icon_name} mr-2`}></i>
+                  {option.name}
+                </Box>
+              );
+            }}
+            onChange={(e, value) => setSelectedSubSubCategory(value)}
+            renderInput={(params) => (
+              <TextField {...params} label="Կատեգորիաներ" />
+            )}
+          />
+        )}
+      </div>
+    </>
   );
 }
 

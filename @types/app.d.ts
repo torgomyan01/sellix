@@ -15,6 +15,12 @@ declare interface ICategory {
 
 type IUpdateCategoryType = "category" | "subcategory" | "subsubcategory";
 
+declare interface IServicesType {
+  "Վաճառում եմ": string;
+  "Տալիս եմ վարձով": string;
+  "Ծառայություն եմ մատուծում": string;
+}
+
 declare interface ICatalog {
   catalogSite: {
     status: boolean;

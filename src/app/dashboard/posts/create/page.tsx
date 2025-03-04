@@ -2,7 +2,7 @@
 
 import MainTemplateDashboard from "@/app/dashboard/main-template-dashboard";
 import React, { useState } from "react";
-import { CURRENCY, SITE_URL } from "@/utils/consts";
+import { CURRENCY, SERVICES_TYPE, SITE_URL } from "@/utils/consts";
 import AutocompleteCorrectCategory from "@/components/layout/autocomplite-correct-category/autocomplete-correct-category";
 import {
   Button,
@@ -27,13 +27,13 @@ interface IAutocompleteResult {
 export default function Posts() {
   const [results, setResults] = useState<IAutocompleteResult | null>(null);
   const [images, setImages] = useState<string[]>([]);
+  const [currency, setCurrency] = useState("");
+  const [typeActivity, setTypeActivity] = useState("");
+  const [typeOffer, setTypeOffer] = useState("");
 
   function CategorySelecting(res: IAutocompleteResult) {
     setResults(res);
   }
-
-  const [currency, setCurrency] = useState("");
-  const [typeActivity, setTypeActivity] = useState("");
 
   const handleChange = (event: SelectChangeEvent) => {
     setCurrency(event.target.value as string);
@@ -54,7 +54,9 @@ export default function Posts() {
   return (
     <MainTemplateDashboard pathname={`/${SITE_URL.DASHBOARD_POSTS_CREATE}`}>
       <div className="w-full wrapper mt-4 p-6">
-        <h1 className="mb-4 font-bold">Ընտրեք համապատասխան բաժիները</h1>
+        <h1 className="mb-4 font-bold text-black">
+          Ընտրեք համապատասխան բաժիները
+        </h1>
         <AutocompleteCorrectCategory onChange={CategorySelecting} />
 
         {results?.cat && results?.subCat && results?.subSubCat && (
@@ -87,8 +89,8 @@ export default function Posts() {
                 />
               </div>
 
-              <div className="w-full sm:w-[60%] mb-8">
-                <FormControl className="w-full sm:w-[300px]">
+              <div className="w-full sm:w-[60%] mb-8 grid grid-cols-2 gap-4">
+                <FormControl className="w-full">
                   <InputLabel id="demo-simple-select-label">
                     Գործունեության տեսակ
                   </InputLabel>
@@ -100,13 +102,30 @@ export default function Posts() {
                       setTypeActivity(e.target.value)
                     }
                   >
-                    <MenuItem value="Վաճառում եմ">Վաճառում եմ</MenuItem>
-                    <MenuItem value="Տալիս եմ վարձով">Տալիս եմ վարձով</MenuItem>
-                    <MenuItem value="Ծառայություն եմ մատուծում">
-                      Ծառայություն եմ մատուծում
-                    </MenuItem>
+                    {Object.values(SERVICES_TYPE).map((item) => (
+                      <MenuItem key={RandomKey()} value={item}>
+                        {item}
+                      </MenuItem>
+                    ))}
                   </Select>
                 </FormControl>
+
+                {typeActivity === SERVICES_TYPE["Տալիս եմ վարձով"] && (
+                  <FormControl className="w-full">
+                    <InputLabel>Առաջարկի տեսակ</InputLabel>
+                    <Select
+                      value={typeOffer}
+                      required
+                      label="Առաջարկի տեսակ"
+                      onChange={(e: SelectChangeEvent) =>
+                        setTypeOffer(e.target.value)
+                      }
+                    >
+                      <MenuItem value="Օրավարձով">Օրավարձով</MenuItem>
+                      <MenuItem value="Ամսավճարով">Ամսավճարով</MenuItem>
+                    </Select>
+                  </FormControl>
+                )}
               </div>
 
               <div className="w-full sm:w-[60%] mb-8 relative">
@@ -154,7 +173,7 @@ export default function Posts() {
                 <FormControlLabel control={<Checkbox />} label="Սակարկելի" />
               </div>
               <div className="mb-8">
-                <div className="w-full sm:w-[60%] flex-js-s gap-2">
+                <div className="w-full sm:w-[60%] flex-js-s gap-2 flex-col sm:flex-row">
                   <label className="w-[80px] h-[80px] border rounded-[8px] flex-jc-c hover:border-black cursor-pointer">
                     <i className="fa-solid fa-plus text-black/70"></i>
                     <input
@@ -165,19 +184,19 @@ export default function Posts() {
                       accept="image/jpeg,image/png"
                     />
                   </label>
-                  <div className="w-[257px] grid grid-cols-3 gap-2">
+                  <div className="w-full sm:w-[257px] grid grid-cols-3 gap-2">
                     {images &&
                       images.map((image) => (
                         <div
                           key={RandomKey()}
-                          className="w-[80px] h-[80px] border rounded-[8px] flex-jc-c overflow-hidden"
+                          className="w-full sm:w-[80px] h-[80px] border rounded-[8px] flex-jc-c overflow-hidden"
                         >
                           <Image
                             src={image}
                             alt="image"
                             width={80}
                             height={80}
-                            className="w-full h-full object-center"
+                            className="w-full h-full object-center object-cover"
                           />
                           {/*<i className="fa-regular fa-image text-black/70"></i>*/}
                         </div>
