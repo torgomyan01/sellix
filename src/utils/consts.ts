@@ -4,6 +4,7 @@ export const SITE_URL = {
   HOW_WORKING: "/how-working",
   DASHBOARD: "dashboard",
   DASHBOARD_POSTS: "dashboard/posts",
+  DASHBOARD_POSTS_CREATE: "dashboard/posts/create",
   DASHBOARD_SETTINGS: "dashboard/settings",
   DASHBOARD_WORK: "dashboard/working",
   DASHBOARD_WORK_MONEY: "dashboard/working/money",
@@ -12,6 +13,14 @@ export const SITE_URL = {
   ADMIN_CATEGORY_ADD: "admin/category/add",
   ADMIN_CATEGORY_FORM: "admin/category/form",
 };
+
+export const CURRENCY = {
+  AMD: "AMD",
+  USD: "USD",
+  RUB: "RUB",
+  EUR: "EUR",
+};
+
 //
 // export const API_URL = {
 //   HOST: "http://ytsmpt-api.loc/api",

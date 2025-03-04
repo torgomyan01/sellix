@@ -24,7 +24,7 @@ const NAVIGATION: Navigation = [
     icon: <i className="fa-solid fa-megaphone"></i>,
   },
   {
-    segment: SITE_URL.ADMIN_CATEGORY_ADD,
+    segment: SITE_URL.DASHBOARD_POSTS_CREATE,
     title: "Ավելացնել",
     icon: <i className="fa-regular fa-plus "></i>,
   },

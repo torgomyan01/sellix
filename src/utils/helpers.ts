@@ -14,3 +14,18 @@ export const RandomKey = (length = 5) => {
 export const printStyleHtml = (name: string, code: string) => {
   return `.${name}:before {content: "\\${code}"}`;
 };
+
+export const toBase64 = (file: File): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      if (typeof reader.result === "string") {
+        resolve(reader.result);
+      } else {
+        reject(new Error("Failed to convert file to base64."));
+      }
+    };
+    reader.onerror = () => reject(reader.error);
+  });
+};
