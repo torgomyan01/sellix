@@ -29,3 +29,22 @@ export const toBase64 = (file: File): Promise<string> => {
     reader.onerror = () => reject(reader.error);
   });
 };
+
+export const GetAllServices = (allData: ICategory[], side: "ui" | "ux") => {
+  return allData
+    .filter((item) => item.parent_id === 200000)
+    .map((item) => {
+      const oldItem = { ...item };
+      if (side === "ui") {
+        oldItem.name = oldItem.name.split("|")[0];
+      } else if (side === "ux") {
+        oldItem.name = oldItem.name.split("|")[1];
+      }
+
+      return oldItem;
+    });
+};
+
+export const GetAllServicesTypes = (allData: ICategory[]) => {
+  return allData.filter((item) => item.parent_id === 100001);
+};

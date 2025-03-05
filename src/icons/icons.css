@@ -98,6 +98,9 @@
 .fa-image:before {
     content: "\f03e";
 }
+.fa-left:before {
+    content: "\f355";
+}
 
 
 /*---------------------------------*/

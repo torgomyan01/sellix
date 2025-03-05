@@ -4,6 +4,10 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 First, run the development server:
 
+#____ Հանկած Ծառայության տեսակին վերաբերող ID - ն բազայում չփոփոխել, եթե փոփոխում եք ապա helper.ts ֆայլի այս GetAllServices ֆունկցիայում նույնպես փոփոխեք
+
+
+
 ```bash
 npm run dev
 # or

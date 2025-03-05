@@ -15,10 +15,16 @@ import {
   SelectChangeEvent,
   TextField,
 } from "@mui/material";
-import { RandomKey, toBase64 } from "@/utils/helpers";
+import {
+  GetAllServices,
+  GetAllServicesTypes,
+  RandomKey,
+  toBase64,
+} from "@/utils/helpers";
 import Image from "next/image";
 
 interface IAutocompleteResult {
+  allCats: ICategory[] | undefined;
   cat: ICategory | null;
   subCat: ICategory | null;
   subSubCat: ICategory | null;
@@ -31,8 +37,13 @@ export default function Posts() {
   const [typeActivity, setTypeActivity] = useState("");
   const [typeOffer, setTypeOffer] = useState("");
 
+  const [rental, setRental] = useState<ICategory[]>([]);
+  const [rentalTypes, setRentalTypes] = useState<ICategory[]>([]);
+
   function CategorySelecting(res: IAutocompleteResult) {
     setResults(res);
+    setRental(GetAllServices(res.allCats || [], "ux"));
+    setRentalTypes(GetAllServicesTypes(res.allCats || []));
   }
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -102,15 +113,15 @@ export default function Posts() {
                       setTypeActivity(e.target.value)
                     }
                   >
-                    {Object.values(SERVICES_TYPE).map((item) => (
-                      <MenuItem key={RandomKey()} value={item}>
-                        {item}
+                    {rental.map((item) => (
+                      <MenuItem key={RandomKey()} value={item.name}>
+                        {item.name}
                       </MenuItem>
                     ))}
                   </Select>
                 </FormControl>
 
-                {typeActivity === SERVICES_TYPE["Տալիս եմ վարձով"] && (
+                {typeActivity.includes("Տալիս եմ վարձով") && (
                   <FormControl className="w-full">
                     <InputLabel>Առաջարկի տեսակ</InputLabel>
                     <Select
@@ -121,8 +132,11 @@ export default function Posts() {
                         setTypeOffer(e.target.value)
                       }
                     >
-                      <MenuItem value="Օրավարձով">Օրավարձով</MenuItem>
-                      <MenuItem value="Ամսավճարով">Ամսավճարով</MenuItem>
+                      {rentalTypes.map((item) => (
+                        <MenuItem key={RandomKey()} value={item.name}>
+                          {item.name}
+                        </MenuItem>
+                      ))}
                     </Select>
                   </FormControl>
                 )}

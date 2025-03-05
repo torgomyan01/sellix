@@ -7,6 +7,7 @@ import { GetAllCategoryHome } from "@/utils/api";
 
 interface IProps {
   onChange: (res: {
+    allCats: ICategory[] | undefined;
     cat: ICategory | null;
     subCat: ICategory | null;
     subSubCat: ICategory | null;
@@ -27,6 +28,7 @@ function AutocompleteCorrectCategory({ onChange }: IProps) {
 
   useEffect(() => {
     onChange({
+      allCats: categoriesResult,
       cat: selectedCategory,
       subCat: selectedSubCategory,
       subSubCat: selectedSubSubCategory,

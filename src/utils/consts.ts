@@ -27,12 +27,6 @@ export const SERVICES_TYPE: IServicesType = {
   "Ծառայություն եմ մատուծում": "Ծառայություն եմ մատուծում",
 };
 
-//
-// export const API_URL = {
-//   HOST: "http://ytsmpt-api.loc/api",
-//   SAVE_MP3: "/save-mp3",
-// };
-
 export const fakeProducts = [
   {
     imageURL: "https://s.list.am/f/587/85521587.webp",
