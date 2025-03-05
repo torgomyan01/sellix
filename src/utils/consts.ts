@@ -21,12 +21,6 @@ export const CURRENCY = {
   EUR: "EUR",
 };
 
-export const SERVICES_TYPE: IServicesType = {
-  "Վաճառում եմ": "Վաճառում եմ",
-  "Տալիս եմ վարձով": "Տալիս եմ վարձով",
-  "Ծառայություն եմ մատուծում": "Ծառայություն եմ մատուծում",
-};
-
 export const fakeProducts = [
   {
     imageURL: "https://s.list.am/f/587/85521587.webp",
