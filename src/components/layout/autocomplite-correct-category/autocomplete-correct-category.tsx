@@ -6,12 +6,7 @@ import React, { useEffect, useState } from "react";
 import { GetAllCategoryHome } from "@/utils/api";
 
 interface IProps {
-  onChange: (res: {
-    allCats: ICategory[] | undefined;
-    cat: ICategory | null;
-    subCat: ICategory | null;
-    subSubCat: ICategory | null;
-  }) => void;
+  onChange: (res: IAutocompleteResult) => void;
 }
 
 function AutocompleteCorrectCategory({ onChange }: IProps) {

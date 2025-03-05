@@ -15,10 +15,11 @@ declare interface ICategory {
 
 type IUpdateCategoryType = "category" | "subcategory" | "subsubcategory";
 
-declare interface IServicesType {
-  "Վաճառում եմ": string;
-  "Տալիս եմ վարձով": string;
-  "Ծառայություն եմ մատուծում": string;
+declare interface IAutocompleteResult {
+  allCats: ICategory[] | undefined;
+  cat: ICategory | null;
+  subCat: ICategory | null;
+  subSubCat: ICategory | null;
 }
 
 declare interface ICatalog {

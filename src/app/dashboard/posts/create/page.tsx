@@ -2,7 +2,7 @@
 
 import MainTemplateDashboard from "@/app/dashboard/main-template-dashboard";
 import React, { useState } from "react";
-import { CURRENCY, SERVICES_TYPE, SITE_URL } from "@/utils/consts";
+import { CURRENCY, SITE_URL } from "@/utils/consts";
 import AutocompleteCorrectCategory from "@/components/layout/autocomplite-correct-category/autocomplete-correct-category";
 import {
   Button,
@@ -22,13 +22,6 @@ import {
   toBase64,
 } from "@/utils/helpers";
 import Image from "next/image";
-
-interface IAutocompleteResult {
-  allCats: ICategory[] | undefined;
-  cat: ICategory | null;
-  subCat: ICategory | null;
-  subSubCat: ICategory | null;
-}
 
 export default function Posts() {
   const [results, setResults] = useState<IAutocompleteResult | null>(null);
