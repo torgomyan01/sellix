@@ -23,7 +23,6 @@
     "react/react-in-jsx-scope": "off",
     "semi": ["error", "always"],
     "indent": ["error", 2],
-    "no-unused-vars": ["warn"],
     "no-console": "warn",
     "arrow-body-style": "off",
     "prefer-arrow-callback": "off",
@@ -41,6 +40,10 @@
     "import/prefer-default-export": "off",
     "react/display-name": "off",
     "import/no-cycle": "off",
-    "react/no-find-dom-node": "warn"
+    "react/no-find-dom-node": "warn",
+
+    /** ✅ Թույլատրել `any`-ը */
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   }
 }
