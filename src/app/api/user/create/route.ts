@@ -10,13 +10,16 @@ export async function POST(request: Request) {
   try {
     const requestData: IDBUser = await request.json();
 
-    if (!requestData.name || !requestData.phone_number || !requestData.password) {
+    if (
+      !requestData.name ||
+      !requestData.phone_number ||
+      !requestData.password
+    ) {
       return NextResponse.json({
         status: 0,
         error: "Missing required fields (name, phone_number, password)",
       });
     }
-
 
     const existingUser = await prisma.user.findMany({
       where: { phone_number: requestData.phone_number },

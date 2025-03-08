@@ -7,32 +7,35 @@ import jwt from "jsonwebtoken";
 const prisma = new PrismaClient();
 const JWT_SECRET = process.env.JWT_SECRET as string;
 
-export async function UserLogin(userLogin: { phone_number: string; password: string }) {
-  console.log(userLogin, "222");
-
+export async function UserLogin(userLogin: {
+  phone_number: string;
+  password: string;
+}) {
   // ✅ Ստուգում ենք, որ բոլոր դաշտերը լրացված են
   if (!userLogin.phone_number || !userLogin.password) {
     return {
       status: 0,
-      message: "Դաշտերը պետք է պարտադիր լրացվեն"
+      message: "Դաշտերը պետք է պարտադիր լրացվեն",
     };
   }
-
 
   const getUser = await prisma.user.findFirst({
     where: {
       phone_number: userLogin.phone_number,
-    }
-  })
+    },
+  });
 
-  if(!getUser){
+  if (!getUser) {
     return {
       status: 0,
-      message: "Նշվծ տվյալներով օգտատեր գոյություն չունի"
+      message: "Նշվծ տվյալներով օգտատեր գոյություն չունի",
     };
   }
 
-  const passwordMatch = await bcrypt.compare(userLogin.password, getUser.password);
+  const passwordMatch = await bcrypt.compare(
+    userLogin.password,
+    getUser.password,
+  );
   if (!passwordMatch) {
     return { status: 0, message: "Սխալ գաղտնաբառ" };
   }
@@ -44,18 +47,18 @@ export async function UserLogin(userLogin: { phone_number: string; password: str
       phone_number: getUser.phone_number,
     },
     JWT_SECRET, // Գաղտնի բանալին
-    { expiresIn: "15d" } // Տոկենի վավերականությունը (7 օր)
+    { expiresIn: "15d" }, // Տոկենի վավերականությունը (7 օր)
   );
 
   return {
     status: 1,
     data: {
-      token: token,
+      token,
       user: {
         id: getUser.id,
         name: getUser.name,
         phone_number: getUser.phone_number,
       },
-    }
+    },
   };
 }
