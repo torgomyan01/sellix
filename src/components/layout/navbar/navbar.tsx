@@ -7,15 +7,16 @@ import { CircularProgress } from "@mui/material";
 import { localStorageKeys } from "@/utils/consts";
 import { setUserInfo } from "@/redux/user";
 import NavbarAuthBlock from "@/components/layout/navbar/navbar-auth-block";
+import { serOpenCloseModalLogin } from "@/redux/modals";
 
 function Navbar() {
   const dispatch = useDispatch();
   const user = useSelector((state: IUserState) => state.user.userInfo);
-  const [modalLogin, setModalLogin] = useState<boolean>(false);
+  const modalsLogin = useSelector((state: IModals) => state.modals.modalLogin);
   const [modalRegister, setModalRegister] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const closeModalLogin = () => setModalLogin(false);
+  const closeModalLogin = () => dispatch(serOpenCloseModalLogin(false));
   const closeModalRegister = () => setModalRegister(false);
 
   useEffect(() => {
@@ -46,7 +47,7 @@ function Navbar() {
           <div className="flex-je-c gap-2">
             <button
               className="border text-black px-4 py-2 rounded-[8px] text-[14px] sm:text-[16px] transition hover:border-black hidden sm:block"
-              onClick={() => setModalLogin(true)}
+              onClick={() => dispatch(serOpenCloseModalLogin(true))}
             >
               <i className="fa-light fa-right-to-bracket mr-2"></i>
               Մուտք
@@ -62,7 +63,7 @@ function Navbar() {
         )}
       </div>
 
-      <ModalLogin status={modalLogin} onClose={closeModalLogin} />
+      <ModalLogin status={modalsLogin} onClose={closeModalLogin} />
 
       <ModalRegister status={modalRegister} onClose={closeModalRegister} />
     </>

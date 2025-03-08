@@ -39,7 +39,7 @@ export async function UserLogin(userLogin: {
     getUser.password,
   );
   if (!passwordMatch) {
-    return { status: 0, message: "Սխալ գաղտնաբառ" };
+    return { status: 0, message: "Սխալ մուտքանուն կամ գաղտնաբառ" };
   }
 
   const token = jwt.sign(

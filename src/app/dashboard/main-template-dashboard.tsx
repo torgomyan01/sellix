@@ -15,6 +15,11 @@ const NAVIGATION: Navigation = [
     icon: <i className="fa-solid fa-house"></i>,
   },
   {
+    segment: SITE_URL.DASHBOARD_FAVORITE,
+    title: "Իմ Հավանածները",
+    icon: <i className="fa-solid fa-heart"></i>,
+  },
+  {
     kind: "header",
     title: "Հայտարարություներ",
   },
@@ -105,7 +110,7 @@ export default function MainTemplateDashboard({
       branding={{
         logo: "",
         title: "SELLIX",
-        homeUrl: SITE_URL.DASHBOARD,
+        homeUrl: "/dashboard",
       }}
     >
       <ToastContainer />

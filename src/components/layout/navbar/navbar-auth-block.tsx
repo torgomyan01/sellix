@@ -22,6 +22,11 @@ const menuData = [
     icon: <i className="fa-regular fa-plus mr-1"></i>,
   },
   {
+    url: SITE_URL.DASHBOARD_FAVORITE,
+    name: "Իմ նախընտրածները",
+    icon: <i className="fa-regular fa-heart mr-1 "></i>,
+  },
+  {
     url: SITE_URL.DASHBOARD_WORK,
     name: "Աշխատել գումար",
     icon: <i className="fa-solid fa-circle-dollar text-green-500 mr-1"></i>,
@@ -55,11 +60,11 @@ function NavbarAuthBlock({ user }: IProps) {
   return (
     <div className="relative">
       <div
-        className="flex-js-c gap-2 border border-white pl-1 pr-4 py-1 rounded-full bg-white cursor-pointer text-gray-700"
+        className="flex-js-c gap-2 border border-white pl-1 pr-1 sm:pr-4 py-1 rounded-full bg-white cursor-pointer text-gray-700"
         onClick={handleClick}
       >
         <Avatar sx={{ width: 30, height: 30 }}>{user.name[0]}</Avatar>
-        {user.name}
+        <span className="hidden sm:block">{user.name}</span>
       </div>
 
       <Menu

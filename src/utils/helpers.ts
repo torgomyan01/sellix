@@ -1,3 +1,7 @@
+import { localStorageKeys } from "@/utils/consts";
+import jwt from "jsonwebtoken";
+const JWT_SECRET = process.env.JWT_SECRET as string;
+
 export const RandomKey = (length = 5) => {
   let result = "";
   const characters =
@@ -48,3 +52,17 @@ export const GetAllServices = (allData: ICategory[], side: "ui" | "ux") => {
 export const GetAllServicesTypes = (allData: ICategory[]) => {
   return allData.filter((item) => item.parent_id === 100001);
 };
+
+export const GetToken = () => {
+  return localStorage.getItem(localStorageKeys.token) || "";
+};
+
+export function isTokenExpired(token: string): boolean {
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET) as { exp: number };
+    const currentTime = Math.floor(Date.now() / 1000);
+    return decoded.exp < currentTime;
+  } catch {
+    return true; // Եթե token-ը սխալ է կամ վավեր չէ, վերադարձնում ենք true (ժամկետանց է)
+  }
+}

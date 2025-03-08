@@ -1,6 +1,6 @@
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, useMediaQuery } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
 import React, { useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
@@ -9,6 +9,7 @@ import { CreateUser } from "@/utils/api";
 import { IMaskInput } from "react-imask";
 import Image from "next/image";
 import { toast } from "react-toastify";
+import { useTheme } from "@mui/material/styles";
 
 interface IProps {
   status: boolean;
@@ -45,6 +46,8 @@ const TextMaskCustom = React.forwardRef<HTMLInputElement, any>(
 );
 
 function ModalRegister({ status, onClose }: IProps) {
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [loading, setLoading] = useState<boolean>(false);
   const [name, setName] = useState<string | null>(null);
 
@@ -74,7 +77,7 @@ function ModalRegister({ status, onClose }: IProps) {
 
   return (
     <>
-      <Dialog open={status} onClose={onCloseThanks}>
+      <Dialog open={status} onClose={onCloseThanks} fullScreen={fullScreen}>
         <DialogTitle>
           <div className="flex-jsb-c">
             <span>Գրանցում</span>

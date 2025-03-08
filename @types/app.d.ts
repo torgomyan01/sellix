@@ -8,20 +8,21 @@ declare interface ICreateCategory {
 }
 
 declare interface IDBUser {
+  id: number;
   name: string;
   phone_number: string;
   email: string;
-  password: string;
+  password?: string;
   image_path: string;
-  its_company: string;
-  whats_app: string;
-  telegram: string;
-  viber: string;
+  its_company: boolean;
+  whats_app: boolean;
+  telegram: boolean;
+  viber: boolean;
   fb_link: string;
   insta_link: string;
   linkedin_link: string;
-  createdAt: string;
-  updatedAt: string;
+  createdAt: Date | null;
+  updatedAt: Date | null;
 }
 
 declare interface ICategory {
@@ -56,8 +57,22 @@ declare interface IUserState {
   };
 }
 
+declare interface IModals {
+  modals: {
+    modalLogin: boolean;
+  };
+}
+
 declare interface IUserInfo {
   id: number;
   name: string;
   phone_number: string;
+}
+
+declare interface IJwtResponse {
+  id: number;
+  name: string;
+  phone_number: string;
+  iat: number;
+  exp: number;
 }

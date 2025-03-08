@@ -1,18 +1,16 @@
-"use client";
-
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
-import { Button, TextField } from "@mui/material";
-import Dialog from "@mui/material/Dialog";
+import { Button, TextField, useMediaQuery, Dialog } from "@mui/material";
 import React, { useState } from "react";
 import { IMaskInput } from "react-imask";
 import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik, FieldProps } from "formik";
-import { UserLogin } from "@/app/actions/login";
 import { toast } from "react-toastify";
 import { localStorageKeys } from "@/utils/consts";
 import { useDispatch } from "react-redux";
 import { setUserInfo } from "@/redux/user";
+import { UserLogin } from "@/app/actions/user/login";
+import { useTheme } from "@mui/material/styles";
 
 interface IProps {
   status: boolean;
@@ -24,13 +22,7 @@ interface IUserLogin {
   password: string;
 }
 
-interface TextMaskCustomProps {
-  onChange: (event: { target: { name: string; value: string } }) => void;
-  name: string;
-}
-
-// ✅ Հեռախոսահամարի `IMaskInput`-ի համար TypeScript-ի ճիշտ կիրառումը
-const TextMaskCustom = React.forwardRef<HTMLInputElement, TextMaskCustomProps>(
+const TextMaskCustom = React.forwardRef<HTMLInputElement, any>(
   function TextMaskCustom(props, ref) {
     const { onChange, ...other } = props;
     return (
@@ -59,6 +51,8 @@ const validationSchema = Yup.object({
 
 function ModalLogin({ status, onClose }: IProps) {
   const dispatch = useDispatch();
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -77,7 +71,6 @@ function ModalLogin({ status, onClose }: IProps) {
         localStorageKeys.userInfo,
         JSON.stringify(res.data.user),
       );
-
       dispatch(setUserInfo(res.data.user));
       onClose();
     }
@@ -86,7 +79,7 @@ function ModalLogin({ status, onClose }: IProps) {
   }
 
   return (
-    <Dialog open={status} onClose={onClose}>
+    <Dialog open={status} onClose={onClose} fullScreen={fullScreen}>
       <DialogTitle>
         <div className="flex-jsb-c">
           <span>Մուտք</span>

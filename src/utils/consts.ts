@@ -4,6 +4,7 @@ export const SITE_URL = {
   HOW_WORKING: "/how-working",
   DASHBOARD: "dashboard",
   DASHBOARD_POSTS: "dashboard/posts",
+  DASHBOARD_FAVORITE: "dashboard/favorite",
   DASHBOARD_POSTS_CREATE: "dashboard/posts/create",
   DASHBOARD_SETTINGS: "dashboard/settings",
   DASHBOARD_WORK: "dashboard/working",

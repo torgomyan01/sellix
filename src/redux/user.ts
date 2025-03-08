@@ -16,7 +16,7 @@ const initialState: User = {
 };
 
 // Ստեղծել slice
-export const catalogSite = createSlice({
+export const user = createSlice({
   name: "user-state",
   initialState,
   reducers: {
@@ -27,5 +27,5 @@ export const catalogSite = createSlice({
 });
 
 // Export actions և reducer
-export const { setUserInfo } = catalogSite.actions;
-export default catalogSite.reducer;
+export const { setUserInfo } = user.actions;
+export default user.reducer;
