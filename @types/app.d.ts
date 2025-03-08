@@ -1,3 +1,5 @@
+type IUpdateCategoryType = "category" | "subcategory" | "subsubcategory";
+
 declare interface ICreateCategory {
   name: string;
   parent_id: number;
@@ -30,8 +32,6 @@ declare interface ICategory {
   icon_code: string;
 }
 
-type IUpdateCategoryType = "category" | "subcategory" | "subsubcategory";
-
 declare interface IAutocompleteResult {
   allCats: ICategory[] | undefined;
   cat: ICategory | null;
@@ -45,5 +45,19 @@ declare interface ICatalog {
   };
 }
 
+declare interface IUserLogin {
+  password: string;
+  phone_number: string;
+}
 
-declare interface IUserLogin { password: string; phone_number: string }
+declare interface IUserState {
+  user: {
+    userInfo: IUserInfo | null;
+  };
+}
+
+declare interface IUserInfo {
+  id: number;
+  name: string;
+  phone_number: string;
+}

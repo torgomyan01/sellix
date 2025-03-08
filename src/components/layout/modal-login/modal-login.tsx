@@ -10,6 +10,9 @@ import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik, FieldProps } from "formik";
 import { UserLogin } from "@/app/actions/login";
 import { toast } from "react-toastify";
+import { localStorageKeys } from "@/utils/consts";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserInfo } from "@/redux/user";
 
 interface IProps {
   status: boolean;
@@ -55,6 +58,8 @@ const validationSchema = Yup.object({
 });
 
 function ModalLogin({ status, onClose }: IProps) {
+  const dispatch = useDispatch();
+
   const [loading, setLoading] = useState<boolean>(false);
 
   async function Submit(value: IUserLogin) {
@@ -65,6 +70,18 @@ function ModalLogin({ status, onClose }: IProps) {
     if (res.status === 0) {
       toast.error(res.message);
     }
+
+    if (res.data) {
+      localStorage.setItem(localStorageKeys.token, res.data.token);
+      localStorage.setItem(
+        localStorageKeys.userInfo,
+        JSON.stringify(res.data.user),
+      );
+
+      dispatch(setUserInfo(res.data.user));
+      onClose();
+    }
+
     setLoading(false);
   }
 

@@ -101,6 +101,12 @@
 .fa-left:before {
     content: "\f355";
 }
+.fa-toolbox:before {
+    content: "\f552";
+}
+.fa-right-from-bracket:before {
+    content: "\f2f5";
+}
 
 
 /*---------------------------------*/

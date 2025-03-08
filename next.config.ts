@@ -2,7 +2,7 @@
 const nextConfig = {
   experimental: {
     esmExternals: true,
-    serverActions: true
+    serverActions: {},
   },
   env: {
     // NEXT_PUBLIC_SERVER_URL: process.env.NEXT_PUBLIC_SERVER_URL,

@@ -11,6 +11,8 @@ export async function UserLogin(userLogin: {
   phone_number: string;
   password: string;
 }) {
+  // jwt.verify(token, JWT_SECRET)
+
   // ✅ Ստուգում ենք, որ բոլոր դաշտերը լրացված են
   if (!userLogin.phone_number || !userLogin.password) {
     return {

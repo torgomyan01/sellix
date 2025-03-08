@@ -21,6 +21,11 @@ export const CURRENCY = {
   EUR: "EUR",
 };
 
+export const localStorageKeys = {
+  token: "token",
+  userInfo: "userInfo",
+};
+
 export const fakeProducts = [
   {
     imageURL: "https://s.list.am/f/587/85521587.webp",
