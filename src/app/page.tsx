@@ -68,8 +68,6 @@ export default function Home() {
         </div>
       </div>
 
-
-
       <ModalLogin status={modalLogin} onClose={closeModalLogin} />
 
       <ModalRegister status={modalRegister} onClose={closeModalRegister} />

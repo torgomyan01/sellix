@@ -4,5 +4,10 @@
       "source": "/:path*",
       "destination": "/:path*"
     }
-  ]
+  ],
+  "build": {
+    "env": {
+      "TSCONFIG_PATH": "tsconfig.json"
+    }
+  }
 }
