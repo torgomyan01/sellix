@@ -22,12 +22,14 @@ function AutocompleteCorrectCategory({ onChange }: IProps) {
     useState<ICategory | null>(null);
 
   useEffect(() => {
-    onChange({
+    const _res: IAutocompleteResult = {
       allCats: categoriesResult,
       cat: selectedCategory,
       subCat: selectedSubCategory,
       subSubCat: selectedSubSubCategory,
-    });
+    };
+
+    onChange(_res);
   }, [selectedCategory, selectedSubCategory, selectedSubSubCategory]);
 
   useEffect(() => {
