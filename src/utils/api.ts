@@ -1,11 +1,11 @@
 import axios from "axios";
 
 export const CreateCategory = ({
-                                 name,
-                                 parent_id,
-                                 icon_name,
-                                 icon_code,
-                               }: ICreateCategory) => {
+  name,
+  parent_id,
+  icon_name,
+  icon_code,
+}: ICreateCategory) => {
   return axios.post(`/api/admin/category/create`, {
     name,
     parent_id,
@@ -32,12 +32,11 @@ export const GetAllCategoryHome = () => {
   return axios.get(`/api/main/get-all-categories`);
 };
 
-
 export const CreateUser = ({
-                             name,
-                             phone_number,
-                             password
-                           }: {
+  name,
+  phone_number,
+  password,
+}: {
   name: string;
   password: string;
   phone_number: string;

@@ -7,7 +7,7 @@ import Dialog from "@mui/material/Dialog";
 import React, { useState } from "react";
 import { IMaskInput } from "react-imask";
 import * as Yup from "yup";
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik, FieldProps } from "formik";
 import { UserLogin } from "@/app/actions/login";
 import { toast } from "react-toastify";
 
@@ -16,7 +16,18 @@ interface IProps {
   onClose: () => void;
 }
 
-const TextMaskCustom = React.forwardRef<HTMLInputElement, any>(
+interface IUserLogin {
+  phone_number: string;
+  password: string;
+}
+
+interface TextMaskCustomProps {
+  onChange: (event: { target: { name: string; value: string } }) => void;
+  name: string;
+}
+
+// ✅ Հեռախոսահամարի `IMaskInput`-ի համար TypeScript-ի ճիշտ կիրառումը
+const TextMaskCustom = React.forwardRef<HTMLInputElement, TextMaskCustomProps>(
   function TextMaskCustom(props, ref) {
     const { onChange, ...other } = props;
     return (
@@ -24,7 +35,7 @@ const TextMaskCustom = React.forwardRef<HTMLInputElement, any>(
         {...other}
         mask="(+374) 00-00-00-00"
         inputRef={ref}
-        onAccept={(value: any) =>
+        onAccept={(value: string) =>
           onChange({ target: { name: props.name, value } })
         }
         overwrite
@@ -50,13 +61,13 @@ function ModalLogin({ status, onClose }: IProps) {
     setLoading(true);
 
     const res = await UserLogin(value);
-    console.log(res);
 
     if (res.status === 0) {
       toast.error(res.message);
     }
     setLoading(false);
   }
+
   return (
     <Dialog open={status} onClose={onClose}>
       <DialogTitle>
@@ -78,7 +89,7 @@ function ModalLogin({ status, onClose }: IProps) {
             <Form className="pt-2">
               <div className="w-full mb-8">
                 <Field name="phone_number">
-                  {({ field }: any) => (
+                  {({ field }: FieldProps) => (
                     <TextField
                       {...field}
                       label="Հեռախոսահամար"
