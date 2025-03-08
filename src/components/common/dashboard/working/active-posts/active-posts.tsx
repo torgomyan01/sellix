@@ -11,14 +11,14 @@ function ActivePosts() {
       {Array.from(Array(10).keys()).map((_, i) => (
         <div
           key={RandomKey()}
-          className="w-full border rounded-[20px] flex-js-s gap-4 flex-col sm:flex-row p-4 relative hover:border-gray-400 cursor-pointer mb-4"
+          className="w-full border rounded-[20px] flex-js-s gap-4 flex-col lg:flex-row p-4 relative hover:border-gray-400 cursor-pointer mb-4"
         >
           <img
             src="/img/product/img_1.png"
             alt="Product image"
             width={120}
             height={120}
-            className="w-[120px] h-[120px] object-cover object-center rounded-[5px]"
+            className="w-full sm:w-[120px] h-[250px] sm:h-[120px] object-cover object-center rounded-[5px]"
           />
 
           <div className="min-h-[120px] flex-jsb-s flex-col">
@@ -31,7 +31,7 @@ function ActivePosts() {
               </p>
             </div>
 
-            <div className="flex-js-c gap-2">
+            <div className="flex-js-c gap-2 flex-col sm:flex-row">
               <Button variant="contained">Դիտել մանրամասն</Button>
 
               <ReactClipboard
@@ -50,7 +50,7 @@ function ActivePosts() {
             </div>
           </div>
 
-          <div className="absolute right-[16px] bottom-[12px] text-gray-300">
+          <div className="absolute right-[16px] top-[12px] lg:top-[unset] lg:bottom-[12px] text-gray-300">
             <i className="fa-solid fa-eye mr-2"></i>
             17{i}
           </div>

@@ -5,11 +5,9 @@ import HomeFormSearch from "@/components/common/home/home-form-search";
 import MainTemplate from "@/components/common/main-template/main-template";
 import SliderHome from "@/components/common/home/slider-home";
 import React, { useState } from "react";
-import Dialog from "@mui/material/Dialog";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
-import { Button, TextField } from "@mui/material";
 import CatalogSite from "@/components/common/home/catalog-btn/catalog-btn";
+import ModalRegister from "@/components/layout/modal-register/modal-register";
+import ModalLogin from "@/components/layout/modal-login/modal-login";
 
 export default function Home() {
   const [modalLogin, setModalLogin] = useState<boolean>(false);
@@ -70,85 +68,11 @@ export default function Home() {
         </div>
       </div>
 
-      <Dialog open={modalLogin} onClose={closeModalLogin}>
-        <DialogTitle>
-          <div className="flex-jsb-c">
-            <span>Մուտք</span>
-            <i
-              className="fa-regular fa-xmark-large text-[15px] cursor-pointer"
-              onClick={closeModalLogin}
-            ></i>
-          </div>
-        </DialogTitle>
-        <DialogContent className="w-full sm:w-[400px]">
-          <div className="pt-2">
-            <div className="w-full mb-8">
-              <TextField
-                label="Հեռախոսահամար"
-                className="w-full"
-                variant="outlined"
-              />
-            </div>
-            <div className="w-full mb-4">
-              <TextField
-                label="Գաղտնաբառ"
-                className="w-full"
-                variant="outlined"
-                type="password"
-              />
-            </div>
 
-            <div className="flex-jc-c">
-              <Button variant="contained">Մուտք</Button>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
 
-      <Dialog open={modalRegister} onClose={closeModalRegister}>
-        <DialogTitle>
-          <div className="flex-jsb-c">
-            <span>Գրանցում</span>
-            <i
-              className="fa-regular fa-xmark-large text-[15px] cursor-pointer"
-              onClick={closeModalRegister}
-            ></i>
-          </div>
-        </DialogTitle>
-        <DialogContent className="w-full sm:w-[400px]">
-          <div className="pt-2">
-            <div className="w-full mb-8">
-              <TextField
-                label="Անուն Ազգանուն / Ընկերություն"
-                name="name"
-                className="w-full"
-                variant="outlined"
-              />
-            </div>
-            <div className="w-full mb-8">
-              <TextField
-                label="Հեռախոսահամար"
-                name="phone"
-                className="w-full"
-                variant="outlined"
-              />
-            </div>
-            <div className="w-full mb-4">
-              <TextField
-                label="Գաղտնաբառ"
-                name="password"
-                className="w-full"
-                variant="outlined"
-                type="password"
-              />
-            </div>
+      <ModalLogin status={modalLogin} onClose={closeModalLogin} />
 
-            <div className="flex-jc-c">
-              <Button variant="contained">Գրանցվել</Button>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
+      <ModalRegister status={modalRegister} onClose={closeModalRegister} />
     </MainTemplate>
   );
 }

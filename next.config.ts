@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: { esmExternals: true },
+  experimental: {
+    esmExternals: true,
+    serverActions: true
+  },
   env: {
     // NEXT_PUBLIC_SERVER_URL: process.env.NEXT_PUBLIC_SERVER_URL,
   },
