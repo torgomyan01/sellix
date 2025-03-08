@@ -11,7 +11,7 @@ import { ErrorMessage, Field, Form, Formik, FieldProps } from "formik";
 import { UserLogin } from "@/app/actions/login";
 import { toast } from "react-toastify";
 import { localStorageKeys } from "@/utils/consts";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setUserInfo } from "@/redux/user";
 
 interface IProps {

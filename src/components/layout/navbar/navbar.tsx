@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ModalLogin from "@/components/layout/modal-login/modal-login";
 import ModalRegister from "@/components/layout/modal-register/modal-register";
-import { Avatar, CircularProgress } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 import { localStorageKeys } from "@/utils/consts";
 import { setUserInfo } from "@/redux/user";
 import NavbarAuthBlock from "@/components/layout/navbar/navbar-auth-block";
